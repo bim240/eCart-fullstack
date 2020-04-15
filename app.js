@@ -6,7 +6,7 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 
 var indexRouter = require("./routes/v1/index");
-var usersRouter = require("./routes/v1/users");
+require("dotenv").config();
 
 // connect to database
 mongoose.connect(
@@ -33,7 +33,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/api/v1", indexRouter);
-
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
