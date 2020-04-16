@@ -15,11 +15,11 @@
 //   },
 // };
 exports.userData = (user, token) => {
-  // console.log(token);
+  // console.log(token, "token in format data");
   return (userInfo = {
     username: user.username,
     email: user.email,
-    token: token,
+    token,
     image: user.image,
     phone: user.phone,
     coupons: user.coupon,
