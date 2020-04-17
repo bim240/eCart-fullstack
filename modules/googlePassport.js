@@ -1,13 +1,13 @@
 var passport = require("passport");
-var gitHubStrategy = require("passport-github").Strategy;
+var googleStrategy = require("passport-google-oauth20");
 var User = require("../models/user");
 
 passport.use(
-  new gitHubStrategy(
+  new googleStrategy(
     {
-      clientID: process.env.CLIENTID,
-      clientSecret: process.env.CLIENTSECRET,
-      callbackURL: "/api/v1/users/auth/github/redirect",
+      clientID: process.env.GOOGLECLIENTID,
+      clientSecret: process.env.GOOGLECLIENTSECRET,
+      callbackURL: "/api/v1/users/auth/google/redirect",
     },
     function (refreshToken, accessToken, profile, done) {
       // console.log(profile);

@@ -19,4 +19,5 @@ router.get(
   }),
   UserController.githubLogin
 );
+
 module.exports = router;
