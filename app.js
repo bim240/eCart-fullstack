@@ -6,8 +6,10 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 
 var indexRouter = require("./routes/v1/index");
+var passport = require("passport");
 require("dotenv").config();
 
+require("./modules/passport");
 // connect to database
 mongoose.connect(
   "mongodb://localhost/cart",
@@ -21,6 +23,7 @@ mongoose.connect(
 );
 
 var app = express();
+app.use(passport.initialize());
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));

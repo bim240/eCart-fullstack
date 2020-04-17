@@ -40,4 +40,15 @@ module.exports = {
       next(errror);
     }
   },
+
+  // github login
+  githubLogin: async (req, res, next) => {
+    try {
+      var token = await Auth.geneateJWT(req.user);
+      req.user.token = token;
+      res.status(200).json({ user: FormatData.userData(req.user, token) });
+    } catch (error) {
+      next(error);
+    }
+  },
 };
