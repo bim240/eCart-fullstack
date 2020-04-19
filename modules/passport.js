@@ -1,6 +1,8 @@
 var passport = require("passport");
 var gitHubStrategy = require("passport-github").Strategy;
+
 var User = require("../models/user");
+var mailController = require("../controller/v1/mail");
 
 passport.use(
   new gitHubStrategy(
@@ -24,6 +26,7 @@ passport.use(
             image: profile._json.avatar_url,
             password: process.env.PASSWORD,
           };
+          mailController.sendMailOnSignUp("name", "email");
           User.create(newUser).then((newUser) => {
             user = newUser;
             done(null, user);

@@ -1,6 +1,7 @@
 var User = require("../../models/user");
 var Auth = require("../../modules/auth");
 var FormatData = require("../../modules/formatData");
+var mailContriller = require("./mail");
 
 module.exports = {
   // sign up
@@ -11,7 +12,11 @@ module.exports = {
       user.token = token;
       // userInfo = FormatData.userData(user, token);
       // console.log(userInfo);
-      res.status(200).json({ user: FormatData.userData(user, token) });
+      var mail = await mailContriller.sendMailOnSignUp("name", "email");
+      console.log(mail, "after mail");
+      res
+        .status(200)
+        .json({ user: FormatData.userData(user, token), email: mail });
     } catch (err) {
       return next(err);
     }
