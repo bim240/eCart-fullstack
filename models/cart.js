@@ -5,12 +5,12 @@ var cartSchema = new Schema(
   {
     userId: {
       type: Schema.Types.ObjectId,
-      ref: User,
+      ref: "User",
     },
     productId: [
       {
         type: Schema.Types.ObjectId,
-        ref: Product,
+        ref: "Product",
         count: Number,
       },
     ],

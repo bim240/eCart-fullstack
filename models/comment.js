@@ -1,15 +1,15 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-var commentSchema = new Schema(
+var reviewSchema = new Schema(
   {
     productId: String,
     author: {
       type: Schema.Types.ObjectId,
-      ref: User,
+      ref: "User",
     },
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Comment", commentSchema);
+module.exports = mongoose.model("Review", reviewSchema);

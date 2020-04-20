@@ -1,29 +1,48 @@
 module.exports = {
-  sendMailOnSignUp: async (name, email) => {
-    try {
-      var api_key = process.env.MAILAPIKEY;
-      var domain = process.env.MAILDOMAIN;
-      var mailgun = require("mailgun-js")({ apiKey: api_key, domain: domain });
+  sendMailOnSignUp: (name, email) => {
+    const sgMail = require("@sendgrid/mail");
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+    const msg = {
+      to: "bimlendu357@gmail.com",
+      from: "bimlendu357@gmail.com",
+      subject: "Sending with Twilio SendGrid is Fun",
+      text: "and easy to do anywhere, even with Node.js",
+      html: "<strong>and easy to do anywhere, even with Node.js</strong>",
+    };
+    return (async () => {
+      try {
+        await sgMail.send(msg);
+        return { msg: "success" };
+      } catch (error) {
+        console.error(error);
 
-      var data = {
-        from: "Bimlendu <bimlendu357@gmail.com>",
-        to: "bimlendu357@gmail.com",
-        subject: "signup",
-        text: "You are now a valued customer of eCart",
-      };
-
-      mailgun.messages().send(data, function (error, body) {
-        if (error) {
-          console.log(error);
-          return "Email not sent";
-          // res.status(400).json({ msg: "error while sending mail" });
+        if (error.response) {
+          console.error(error.response.body);
+          return { error: error.response.body };
         }
-        console.log(body);
-        return "Email sent";
-        // res.status(200).json({ email: body });
-      });
-    } catch (error) {
-      return error;
-    }
+      }
+    })();
   },
 };
+
+// const sgMail = require("@sendgrid/mail");
+// sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+// const msg = {
+//   to: "test@example.com",
+//   from: "test@example.com",
+//   subject: "Sending with Twilio SendGrid is Fun",
+//   text: "and easy to do anywhere, even with Node.js",
+//   html: "<strong>and easy to do anywhere, even with Node.js</strong>",
+// };
+// //ES6
+// sgMail.send(msg).then(
+//   () => {},
+//   (error) => {
+//     console.error(error);
+
+//     if (error.response) {
+//       console.error(error.response.body);
+//     }
+//   }
+// );
+// //ES8

@@ -6,6 +6,7 @@
     "start": "nodemon ./bin/www"
   },
   "dependencies": {
+    "@sendgrid/mail": "^7.0.1",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
@@ -14,7 +15,6 @@
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "jsonwebtoken": "^8.5.1",
-    "mailgun-js": "^0.22.0",
     "mongoose": "^5.9.9",
     "morgan": "~1.9.1",
     "passport": "^0.4.1",

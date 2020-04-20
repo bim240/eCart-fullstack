@@ -5,7 +5,7 @@ var addressSchema = new Schema(
   {
     resident: {
       type: Schema.Types.ObjectId,
-      ref: User,
+      ref: "User",
     },
     address: [
       {

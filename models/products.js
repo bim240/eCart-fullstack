@@ -15,7 +15,7 @@ var ProductSchema = new Schema(
     discount: Number,
     size: String,
     discription: [String],
-    // comments: [{ type: Schema.Types.ObjectId, ref: Comment }],
+    review: [{ type: Schema.Types.ObjectId, ref: "Review" }],
     available: Number,
     varient: {
       gender: String,

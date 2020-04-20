@@ -27,18 +27,21 @@ var userSchema = new Schema(
     fav: [String],
     coupon: [String],
     wallet: Number,
+    isBlocked: Boolean,
     admin: Boolean,
-    // cart: [{ type: Schema.Types.ObjectId, ref: Item }],
-    // address: [{ type: Schema.Types.ObjectId, ref: Address }],
-    // reviews: [{ type: Schema.Types.ObjectId, ref: Review }],
-    // order: [{ type: Schema.Types.ObjectId, ref: Item }],
+    cart: [{ type: Schema.Types.ObjectId, ref: "Cart" }],
+    address: [{ type: Schema.Types.ObjectId, ref: "Address" }],
+    reviews: [{ type: Schema.Types.ObjectId, ref: "Review" }],
+    order: [{ type: Schema.Types.ObjectId, ref: "Product" }],
   },
   { timestamps: true }
 );
 
 userSchema.pre("save", async function (next) {
   try {
+    console.log("inside hash");
     if (this.password && this.isModified("password")) {
+      console.log("inside hash");
       this.password = await bcrypt.hash(this.password, 10);
       next();
     }
