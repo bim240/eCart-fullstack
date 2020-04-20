@@ -27,6 +27,7 @@ var userSchema = new Schema(
     fav: [String],
     coupon: [String],
     wallet: Number,
+    admin: Boolean,
     // cart: [{ type: Schema.Types.ObjectId, ref: Item }],
     // address: [{ type: Schema.Types.ObjectId, ref: Address }],
     // reviews: [{ type: Schema.Types.ObjectId, ref: Review }],
