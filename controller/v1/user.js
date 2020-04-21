@@ -11,7 +11,7 @@ module.exports = {
         req.body.user,
         { new: true }
       );
-      console.log(updateduser);
+      // console.log(updateduser);
       updateduser = FormatData.userData(updateduser);
 
       res.status(200).json({ user: updateduser });

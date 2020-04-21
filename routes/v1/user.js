@@ -11,5 +11,6 @@ router.put("fav", Auth.userAuth, userController.removeFromFavList);
 router.delete("/", Auth.userAuth, userController.deleteAccount);
 router.get("/cart", Auth.userAuth, cartController.getCart);
 router.post("/cart", Auth.userAuth, cartController.addToCart);
+router.put("/", Auth.userAuth, cartController.removeFromCart);
 
 module.exports = router;

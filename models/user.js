@@ -39,10 +39,22 @@ var userSchema = new Schema(
 
 userSchema.pre("save", async function (next) {
   try {
-    console.log("inside hash");
+    // console.log("inside hash");
     if (this.password && this.isModified("password")) {
-      console.log("inside hash");
+      // console.log("inside hash");
       this.password = await bcrypt.hash(this.password, 10);
+      next();
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+userSchema.pre("findOneAndUpdate", async function (next) {
+  try {
+    console.log("inside hash find by id", this._update.password);
+    if (this._update.password) {
+      console.log("inside hash");
+      this._update.password = await bcrypt.hash(this._update.password, 10);
       next();
     }
   } catch (error) {
