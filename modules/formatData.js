@@ -6,8 +6,12 @@ exports.userData = (user, token) => {
     token,
     image: user.image,
     phone: user.phone,
-    coupons: user.coupon,
     wallet: user.wallet,
+    coupons: user.coupon,
     token: user.token,
+    address: user.address,
+    order: user.order,
+    fav: user.fav,
+    cart: user.cart,
   });
 };

@@ -8,18 +8,22 @@ module.exports = {
   // sign up
   register: async (req, res, next) => {
     try {
-      const user = await User.create(req.body.user);
-      const cart = await Cart.create({ userId: user.id });
+      let user = await User.create(req.body.user);
+      let cart = await Cart.create({ userId: user.id });
+      user = await User.findByIdAndUpdate(
+        user.id,
+        { cart: cart.id },
+        { new: true }
+      ).populate("cart");
       const token = await Auth.geneateJWT(user, process.env.SECRET);
       user.token = token;
       // userInfo = FormatData.userData(user, token);
-      // console.log(userInfo);
-      var mail = await mailContriller.sendMailOnSignUp("name", "email");
-      console.log(mail, "after mail");
+      // console.log(user);
+      // var mail = await mailContriller.sendMailOnSignUp("name", "email");
+      // console.log(mail, "after mail");
       res.status(200).json({
         user: FormatData.userData(user, token),
-        email: mail,
-        cart: cart,
+        email: "mail",
       });
     } catch (err) {
       return next(err);
@@ -32,7 +36,7 @@ module.exports = {
       if (!email || !password) {
         res.status(400).json({ err: "eamil and password required" });
       }
-      var user = await User.findOne({ email });
+      var user = await User.findOne({ email }).populate("cart");
       if (!user) {
         res.status(400).json({ err: "invalid user" });
       }
@@ -45,7 +49,7 @@ module.exports = {
       user.token = token;
       // var userInfo = await FormatData.userData(user, token);
       // console.log(FormatData.userData(user, token), "user details in controller");
-      res.status(200).json({ user: FormatData.userData(user, token), cart });
+      res.status(200).json({ user: FormatData.userData(user, token) });
     } catch (error) {
       next(error);
     }
