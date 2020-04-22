@@ -1,15 +1,10 @@
 var Product = require("../../models/products");
 
 module.exports = {
-  addItems: async (req, res, next) => {
+  getAllItems: async (req, res, next) => {
     try {
-      var createdItems = [];
-
-      for (let item of req.body.items) {
-        let newItem = await Product.create(item);
-        createdItems.push(newItem);
-      }
-      res.status(200).json({ items: createdItems });
+      var allProduct = await Product.find();
+      res.status(200).json({ products: allProduct });
     } catch (error) {
       next(error);
     }

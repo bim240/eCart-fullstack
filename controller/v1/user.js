@@ -6,6 +6,9 @@ module.exports = {
   updateUserInfo: async (req, res, next) => {
     try {
       // console.log(req.user);
+      var previousUser = await User.findById(req.user.userId);
+      req.body.user.isAdmin = previousUser.isAdmin;
+      req.body.user.isBlocked = previousUser.isBlocked;
       var updateduser = await User.findByIdAndUpdate(
         req.user.userId,
         req.body.user,

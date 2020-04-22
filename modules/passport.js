@@ -11,28 +11,34 @@ passport.use(
       clientSecret: process.env.CLIENTSECRET,
       callbackURL: "/api/v1/users/auth/github/redirect",
     },
-    function (refreshToken, accessToken, profile, done) {
+    async function (refreshToken, accessToken, profile, done) {
       // console.log(profile);
       var user;
-      User.findOne({ eamil: profile._json.email }).then((currentUser) => {
-        if (currentUser) {
-          user = currentUser;
-          done(null, user);
-        } else {
-          newUser = {
-            name: profile.displayName,
-            username: profile.username,
-            email: profile._json.email,
-            image: profile._json.avatar_url,
-            password: process.env.PASSWORD,
-          };
-          mailController.sendMailOnSignUp("name", "email");
-          User.create(newUser).then((newUser) => {
-            user = newUser;
-            done(null, user);
-          });
-        }
-      });
+      var currentUser = await User.findOne({ eamil: profile._json.email });
+      if (currentUser) {
+        user = currentUser;
+        done(null, user);
+      } else {
+        newUser = {
+          name: profile.displayName,
+          username: profile.username,
+          email: profile._json.email,
+          image: profile._json.avatar_url,
+          password: process.env.PASSWORD,
+          isAdmin: false,
+          isBlocked: false,
+        };
+        mailController.sendMailOnSignUp("name", "email");
+        var newUser = await User.create(newUser);
+        let cart = await Cart.create({ userId: newUser.id });
+        newUser = await User.findByIdAndUpdate(
+          newUser.id,
+          { cart: cart.id },
+          { new: true }
+        ).populate("cart");
+        user = newUser;
+        done(null, user);
+      }
 
       // console.log(user, "from passprt");
     }

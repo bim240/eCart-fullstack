@@ -27,7 +27,7 @@ var userSchema = new Schema(
     coupon: [String],
     wallet: Number,
     isBlocked: Boolean,
-    admin: Boolean,
+    isAdmin: Boolean,
     fav: [{ type: Schema.Types.ObjectId, ref: "Product" }],
     cart: { type: Schema.Types.ObjectId, ref: "Cart" },
     address: [{ type: Schema.Types.ObjectId, ref: "Address" }],
@@ -51,9 +51,9 @@ userSchema.pre("save", async function (next) {
 });
 userSchema.pre("findOneAndUpdate", async function (next) {
   try {
-    console.log("inside hash find by id", this._update.password);
+    // console.log("inside hash find by id", this._update.password);
     if (this._update.password) {
-      console.log("inside hash");
+      // console.log("inside hash");
       this._update.password = await bcrypt.hash(this._update.password, 10);
       next();
     }

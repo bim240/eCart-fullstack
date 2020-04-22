@@ -13,5 +13,5 @@ router.get("/", function (req, res, next) {
 router.use("/users", usersRouter);
 router.use("/user", userRouter);
 router.use("/items", itemsRouteer);
-router.use("/user/adimin", adminRouter);
+router.use("/admin", adminRouter);
 module.exports = router;

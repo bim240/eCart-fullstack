@@ -8,6 +8,8 @@ module.exports = {
   // sign up
   register: async (req, res, next) => {
     try {
+      req.body.user.isAdmin = false;
+      req.body.user.isBlocked = false;
       let user = await User.create(req.body.user);
       let cart = await Cart.create({ userId: user.id });
       user = await User.findByIdAndUpdate(
@@ -44,7 +46,12 @@ module.exports = {
       if (!result) {
         res.status(400).json({ err: "invalid password" });
       }
-      var cart = await Cart.findOne({ userId: user.id });
+      if (user.isBlocked) {
+        res.status(400).json({
+          msg:
+            "Your account has been blocked in regards to your recent activity",
+        });
+      }
       var token = await Auth.geneateJWT(user);
       user.token = token;
       // var userInfo = await FormatData.userData(user, token);

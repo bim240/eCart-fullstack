@@ -15,3 +15,20 @@ exports.userData = (user, token) => {
     cart: user.cart,
   });
 };
+
+exports.adminAllUser = (user) => {
+  return {
+    username: user.username,
+    email: user.email,
+    image: user.image,
+    phone: user.phone,
+    wallet: user.wallet,
+    coupons: user.coupon,
+    token: user.token,
+    address: user.address,
+    order: user.order,
+    fav: user.fav,
+    cart: user.cart,
+    isBlocked: user.isBlocked,
+  };
+};
