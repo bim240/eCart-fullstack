@@ -4,6 +4,7 @@ var usersRouter = require("./users");
 var itemsRouteer = require("./items");
 var adminRouter = require("./admin");
 var userRouter = require("./user");
+var commentRouter = require("./comment");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
@@ -14,4 +15,5 @@ router.use("/users", usersRouter);
 router.use("/user", userRouter);
 router.use("/items", itemsRouteer);
 router.use("/admin", adminRouter);
+router.use("/comments", commentRouter);
 module.exports = router;

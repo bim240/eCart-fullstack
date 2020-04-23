@@ -9,6 +9,7 @@ var reviewSchema = new Schema(
       ref: "User",
     },
     body: String,
+    stars: Number,
   },
   { timestamps: true }
 );

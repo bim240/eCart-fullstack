@@ -32,3 +32,17 @@ exports.adminAllUser = (user) => {
     isBlocked: user.isBlocked,
   };
 };
+
+exports.formatComments = (comments) => {
+  // console.log(comments);
+  return comments.map((comment) => {
+    return {
+      id: comment.id,
+      productId: comment.productId,
+      body: comment.body,
+      stars: comment.stars,
+      username: comment.author.username,
+      image: comment.author.image,
+    };
+  });
+};
