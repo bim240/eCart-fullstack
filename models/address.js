@@ -7,19 +7,17 @@ var addressSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "User",
     },
-    address: [
-      {
-        name: String,
-        sonOf: String,
-        mobNumber: Number,
-        address1: String,
-        address2: String,
-        area: String,
-        district: String,
-        state: String,
-        pinCode: Number,
-      },
-    ],
+    address: {
+      name: String,
+      sonOf: String,
+      mobNumber: Number,
+      address1: String,
+      address2: String,
+      area: String,
+      district: String,
+      state: String,
+      pinCode: Number,
+    },
   },
   { timestamps: true }
 );

@@ -52,6 +52,7 @@ module.exports = {
       next(error);
     }
   },
+  // delete account
   deleteAccount: async (req, res, next) => {
     try {
       var result = await User.findByIdAndDelete(req.user.userId);
