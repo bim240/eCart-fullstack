@@ -9,4 +9,13 @@ module.exports = {
       next(error);
     }
   },
+  getItemsByName: async (req, res, next) => {
+    try {
+      var category = req.params.name;
+      var product = await Product.find({ category });
+      res.status(200).json({ items: product });
+    } catch (error) {
+      next(error);
+    }
+  },
 };
