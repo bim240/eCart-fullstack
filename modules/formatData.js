@@ -47,3 +47,11 @@ exports.formatComments = (comments) => {
     };
   });
 };
+exports.foramtFav = (user) => {
+  return {
+    id: user.id,
+    username: user.username,
+    image: user.image,
+    fav: user.fav,
+  };
+};

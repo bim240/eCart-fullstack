@@ -838,6 +838,12 @@ Body
 }
 ```
 
+Header
+
+```js
+Authorization = token;
+```
+
 #### Response
 
 ```js
@@ -1130,12 +1136,6 @@ Body
 		"productId":"5ea28db466cdb22611d06d61"
 	}
 }
-```
-
-Header
-
-```js
-Authorization = token;
 ```
 
 #### Response
@@ -1474,3 +1474,392 @@ Authorization = token;
 ```
 
 ---
+
+### 15.Get fav list of User
+
+#### Request
+
+Authentication as a user is required
+
+`GET /api/v1/user/fav`
+
+Body
+
+```js
+[empty];
+```
+
+Header
+
+```js
+Authorization = token;
+```
+
+#### Response
+
+```js
+{
+    "allFav": {
+        "id": "5ea2a66978cd3a3191a8dd11",
+        "username": "Jacob0008",
+        "fav": [
+            {
+                "varient": {
+                    "genere": [
+                        "none"
+                    ],
+                    "gender": "all",
+                    "ageGroup": "all",
+                    "weight": 5,
+                    "color": "black green"
+                },
+                "image": [
+                    "String"
+                ],
+                "discription": [
+                    "hey this is super confy"
+                ],
+                "review": [],
+                "_id": "5ea28db466cdb22611d06d61",
+                "category": "furniture2",
+                "subCatogery": "chair2",
+                "name": "super comfy2",
+                "price": 5005,
+                "brand": "no soo000 comfy",
+                "stars": 4.5,
+                "seller": "unknown",
+                "soldCount": 2005,
+                "discount": 20,
+                "size": "big",
+                "quantity": 900,
+                "createdAt": "2020-04-24T06:56:52.439Z",
+                "updatedAt": "2020-04-24T09:15:52.128Z",
+                "__v": 0
+            },
+        ]
+    }
+}
+```
+
+---
+
+### 16.Add to fav list of User
+
+#### Request
+
+Authentication as a user is required
+
+`POST /api/v1/user/fav`
+
+Body
+
+```js
+{
+	"itemId": "5ea28db466cdb22611d06d60"
+}
+```
+
+Header
+
+```js
+Authorization = token;
+```
+
+#### Response
+
+```js
+{
+    "favList": {
+        "id": "5ea2a66978cd3a3191a8dd11",
+        "username": "Jacob0008",
+        "fav": [
+            {
+                "varient": {
+                    "genere": [
+                        "none"
+                    ],
+                    "gender": "all",
+                    "ageGroup": "all",
+                    "weight": 5,
+                    "color": "black green"
+                },
+                "image": [
+                    "String"
+                ],
+                "discription": [
+                    "hey this is super confy"
+                ],
+                "review": [],
+                "_id": "5ea28db466cdb22611d06d61",
+                "category": "furniture2",
+                "subCatogery": "chair2",
+                "name": "super comfy2",
+                "price": 5005,
+                "brand": "no soo000 comfy",
+                "stars": 4.5,
+                "seller": "unknown",
+                "soldCount": 2005,
+                "discount": 20,
+                "size": "big",
+                "quantity": 900,
+                "createdAt": "2020-04-24T06:56:52.439Z",
+                "updatedAt": "2020-04-24T09:15:52.128Z",
+                "__v": 0
+            },
+            {
+                "varient": {
+                    "genere": [
+                        "none"
+                    ],
+                    "gender": "all",
+                    "ageGroup": "all",
+                    "weight": 5,
+                    "color": "black green"
+                },
+                "image": [
+                    "String"
+                ],
+                "discription": [
+                    "hey this is super confy"
+                ],
+                "review": [],
+                "_id": "5ea28db466cdb22611d06d61",
+                "category": "furniture2",
+                "subCatogery": "chair2",
+                "name": "super comfy2",
+                "price": 5005,
+                "brand": "no soo000 comfy",
+                "stars": 4.5,
+                "seller": "unknown",
+                "soldCount": 2005,
+                "discount": 20,
+                "size": "big",
+                "quantity": 900,
+                "createdAt": "2020-04-24T06:56:52.439Z",
+                "updatedAt": "2020-04-24T09:15:52.128Z",
+                "__v": 0
+            },
+            {
+                "varient": {
+                    "genere": [
+                        "none"
+                    ],
+                    "gender": "all",
+                    "ageGroup": "all",
+                    "weight": 5,
+                    "color": "black"
+                },
+                "image": [
+                    "String"
+                ],
+                "discription": [
+                    "hey this is super confy"
+                ],
+                "review": [],
+                "_id": "5ea28db466cdb22611d06d60",
+                "category": "furniture",
+                "subCatogery": "chair",
+                "name": "super comfy",
+                "price": 5000,
+                "brand": "no soo comfy",
+                "stars": 4.5,
+                "seller": "unknown",
+                "soldCount": 200,
+                "discount": 20,
+                "size": "big",
+                "quantity": 900,
+                "createdAt": "2020-04-24T06:56:52.400Z",
+                "updatedAt": "2020-04-24T06:56:52.400Z",
+                "__v": 0
+            }
+        ]
+    }
+}
+```
+
+---
+
+### 17.Remove from fav list of User
+
+#### Request
+
+Authentication as a user is required
+
+`DELETE /api/v1/user/fav`
+
+Body
+
+```js
+{
+	"itemId": "5ea28db466cdb22611d06d60"
+}
+```
+
+Header
+
+```js
+Authorization = token;
+```
+
+#### Response
+
+```js
+{
+    "msg": "removed from fav list"
+}
+```
+
+---
+
+### 18.Place your order
+
+#### Request
+
+Authentication as a user is required
+
+`POST /api/v1/user/order`
+
+Body
+
+```js
+{
+ "orders":[
+	 {
+		"productId":"5ea28db466cdb22611d06d61",
+		"quantity":"20"
+	},
+	{
+		"productId":"5ea28db466cdb22611d06d63",
+		"quantity":"30"
+	}
+
+ ]
+}
+```
+
+Header
+
+```js
+Authorization = token;
+```
+
+#### Response
+
+```js
+{
+    "orders": "placed",
+    "mail": "sent"
+}
+```
+
+---
+
+### 19.Delete your account
+
+#### Request
+
+Authentication as a user is required
+
+`DELETE /api/v1/user/order`
+
+Body
+
+```js
+[empty];
+```
+
+Header
+
+```js
+Authorization = token;
+```
+
+#### Response
+
+```js
+{
+  msg: "Account deleted";
+}
+```
+
+---
+
+## Remaining No Auth Routes
+
+### 1.Get item by category
+
+#### Request
+
+Authentication as a user is not required
+
+`GET /api/v1/items/furniture`
+
+Body
+
+```js
+[empty];
+```
+
+Header
+
+```js
+[empty];
+```
+
+#### Response
+
+```js
+{
+    "items": [
+        {
+            "varient": {
+                "genere": [
+                    "none"
+                ],
+                "gender": "all",
+                "ageGroup": "all",
+                "weight": 5,
+                "color": "black"
+            },
+            "image": [
+                "String"
+            ],
+            "discription": [
+                "hey this is super confy"
+            ],
+            "review": [],
+            "_id": "5ea28db466cdb22611d06d60",
+            "category": "furniture",
+            "subCatogery": "chair",
+            "name": "super comfy",
+            "price": 5000,
+            "brand": "no soo comfy",
+            "stars": 4.5,
+            "seller": "unknown",
+            "soldCount": 200,
+            "discount": 20,
+            "size": "big",
+            "quantity": 900,
+            "createdAt": "2020-04-24T06:56:52.400Z",
+            "updatedAt": "2020-04-24T06:56:52.400Z",
+            "__v": 0
+        }
+    ]
+}
+```
+
+---
+
+## Error Message
+
+###Foramt of all the error
+
+```js
+{
+  "err": {
+    "body": [
+      "invalid signature"
+    ]
+  }
+}
+```

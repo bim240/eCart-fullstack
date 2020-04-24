@@ -8,8 +8,9 @@ var addressController = require("../../controller/v1/address");
 var orderController = require("../../controller/v1/order");
 
 router.put("/", Auth.userAuth, userController.updateUserInfo);
+router.get("/fav", Auth.userAuth, userController.getAllFav);
 router.post("/fav", Auth.userAuth, userController.addToFavList);
-router.put("/fav", Auth.userAuth, userController.removeFromFavList);
+router.delete("/fav", Auth.userAuth, userController.removeFromFavList);
 router.delete("/", Auth.userAuth, userController.deleteAccount);
 router.get("/cart", Auth.userAuth, cartController.getCart);
 router.post("/cart", Auth.userAuth, cartController.addToCart);
