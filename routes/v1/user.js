@@ -5,6 +5,7 @@ var userController = require("../../controller/v1/user");
 var Auth = require("../../modules/auth");
 var cartController = require("../../controller/v1/cart");
 var addressController = require("../../controller/v1/address");
+var orderController = require("../../controller/v1/order");
 
 router.put("/", Auth.userAuth, userController.updateUserInfo);
 router.post("/fav", Auth.userAuth, userController.addToFavList);
@@ -17,5 +18,6 @@ router.get("/address", Auth.userAuth, addressController.getAllAddress);
 router.post("/address", Auth.userAuth, addressController.addAddress);
 router.put("/address", Auth.userAuth, addressController.updateAddress);
 router.delete("/address", Auth.userAuth, addressController.deleteAddress);
+router.post("/order", Auth.userAuth, orderController.placeOrder);
 
 module.exports = router;

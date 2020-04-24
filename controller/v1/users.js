@@ -2,7 +2,7 @@ var User = require("../../models/user");
 var Cart = require("../../models/cart");
 var Auth = require("../../modules/auth");
 var FormatData = require("../../modules/formatData");
-var mailContriller = require("./mail");
+var mailController = require("./mail");
 
 module.exports = {
   // sign up
@@ -21,11 +21,11 @@ module.exports = {
       user.token = token;
       // userInfo = FormatData.userData(user, token);
       // console.log(user);
-      // var mail = await mailContriller.sendMailOnSignUp("name", "email");
+      var mail = await mailController.sendMailOnSignUp("name", "email");
       // console.log(mail, "after mail");
       res.status(200).json({
         user: FormatData.userData(user, token),
-        email: "mail",
+        email: mail,
       });
     } catch (err) {
       return next(err);

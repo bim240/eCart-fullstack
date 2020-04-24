@@ -3,6 +3,7 @@ var foramtData = require("../../modules/formatData");
 var Product = require("../../models/products");
 
 module.exports = {
+  // get all the comments
   getAllComments: async (req, res, next) => {
     try {
       var allComments = await Comment.find({
@@ -27,6 +28,7 @@ module.exports = {
       next(error);
     }
   },
+  // add comments
   addComment: async (req, res, next) => {
     try {
       req.body.comment.author = req.user.userId;
@@ -44,6 +46,7 @@ module.exports = {
       next(error);
     }
   },
+  // delete a comment
   deleteComment: async (req, res, next) => {
     try {
       req.body.comment.author = req.user.userId;
@@ -62,6 +65,7 @@ module.exports = {
       next(error);
     }
   },
+  // update a comments
   updateComments: async (req, res, next) => {
     try {
       req.body.comment.author = req.user.userId;
