@@ -1312,7 +1312,7 @@ Authorization = token;
 
 ---
 
-### 12.Get All User's Address
+### 12.Get User's All Address
 
 #### Request
 
@@ -1852,7 +1852,7 @@ Header
 
 ## Error Message
 
-###Foramt of all the error
+### Foramt of all the error
 
 ```js
 {
