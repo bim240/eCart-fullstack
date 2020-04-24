@@ -1441,7 +1441,7 @@ Authorization = token;
 
 ---
 
-### 13.Delete User's Address
+### 14.Delete User's Address
 
 #### Request
 
