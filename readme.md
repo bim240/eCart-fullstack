@@ -624,7 +624,7 @@ Authorization = [not needed];
 
 ---
 
-### 7.UnBlock a user
+### 7.Update item details
 
 #### Request
 
