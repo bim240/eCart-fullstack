@@ -4,7 +4,7 @@ module.exports = {
   getCart: async (req, res, next) => {
     try {
       let cartInfo = await Cart.findOne({ userId: req.user.userId }).populate(
-        "Product"
+        "product"
       );
       res.status(200).json({ cart: cartInfo });
     } catch (error) {
@@ -16,9 +16,9 @@ module.exports = {
       let cart = await Cart.findOne({ userId: req.user.userId });
       let updatedCart = await Cart.findByIdAndUpdate(
         cart.id,
-        { $push: { productId: req.body.productId } },
+        { $push: { product: req.body.product.id } },
         { new: true }
-      ).populate("Product");
+      ).populate("product");
       res.status(200).json({ cart: updatedCart });
     } catch (error) {
       next(error);
@@ -29,10 +29,10 @@ module.exports = {
       let cart = await Cart.findOne({ userId: req.user.userId });
       let updatedCart = await Cart.findByIdAndUpdate(
         cart.id,
-        { $pull: { productId: req.body.productId } },
+        { $pull: { product: req.body.product.id } },
         { new: true }
-      ).populate("Product");
-      res.status(200).json({ cart: updatedCart });
+      ).populate("product");
+      res.status(200).json({ msg: "product removed" });
     } catch (error) {
       next(error);
     }

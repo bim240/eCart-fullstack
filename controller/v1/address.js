@@ -2,6 +2,7 @@ var Address = require("../../models/address");
 var User = require("../../models/user");
 
 module.exports = {
+  // get all address
   getAllAddress: async (req, res, next) => {
     try {
       var alladdress = await Address.find({ resident: req.user.userId });
@@ -10,6 +11,7 @@ module.exports = {
       next(error);
     }
   },
+  // add address
   addAddress: async (req, res, next) => {
     try {
       req.body.address.resident = req.user.userId;
@@ -22,6 +24,7 @@ module.exports = {
       next(error);
     }
   },
+  // update address
   updateAddress: async (req, res, next) => {
     try {
       var newAddresss = await Address.findByIdAndUpdate(
@@ -34,6 +37,7 @@ module.exports = {
       next(error);
     }
   },
+  // delete address
   deleteAddress: async (req, res, next) => {
     try {
       req.body.address.resident = req.user.userId;
@@ -41,7 +45,7 @@ module.exports = {
       await User.findByIdAndUpdate(req.user.userId, {
         $pull: { address: newAddresss.id },
       });
-      res.status(200).json({ address: newAddresss });
+      res.status(200).json({ msg: "Address deleted" });
     } catch (error) {
       next(error);
     }

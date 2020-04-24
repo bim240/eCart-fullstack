@@ -7,7 +7,7 @@ var cartSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "User",
     },
-    productId: [
+    product: [
       {
         type: Schema.Types.ObjectId,
         ref: "Product",

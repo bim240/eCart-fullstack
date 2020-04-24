@@ -7,7 +7,7 @@ module.exports = {
   getAllComments: async (req, res, next) => {
     try {
       var allComments = await Comment.find({
-        productId: req.body.comments.productId,
+        productId: req.body.comment.productId,
       }).sort({
         id: -1,
       });
@@ -57,7 +57,7 @@ module.exports = {
         });
         var newComment = await Comment.findByIdAndDelete(req.body.comment.id);
         var formatComment = foramtData.formatComments([newComment]);
-        res.status(200).json({ comment: formatComment });
+        res.status(200).json({ msg: "comment deleted" });
       } else {
         res.status(400).json({ msg: "You cant delete this comment" });
       }

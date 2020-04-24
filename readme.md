@@ -724,3 +724,753 @@ Authorization = token;
 ```
 
 ---
+
+## User EndPoint
+
+### 1.SignUp
+
+#### Request
+
+Email will be sent everytime a new user signup
+
+`POST api/v1/users`
+
+Body
+
+```js
+{
+  "user":{
+    "username": "Jacob007",
+    "email": "jake@jake007.jake",
+    "password": "jakejake007"
+  }
+}
+```
+
+#### Response
+
+```js
+{
+    "user": {
+        "username": "Jacob007",
+        "email": "jake@jake007.jake",
+        "token": "jwt token in form of x.y.z",
+        "coupons": [],
+        "address": [],
+        "order": [],
+        "fav": [],
+        "cart": {
+            "productId": [],
+            "_id": "5ea29f1766cdb22611d06d69",
+            "userId": "5ea29f1766cdb22611d06d68",
+            "createdAt": "2020-04-24T08:11:03.940Z",
+            "updatedAt": "2020-04-24T08:11:03.940Z",
+            "__v": 0
+        }
+    },
+    "email": {
+        "msg": "success"
+    }
+}
+```
+
+---
+
+### 2.SignIn
+
+#### Request
+
+`GET /api/v1/users/login`
+
+Body
+
+```js
+{
+  "user":{
+    "email": "jake@jake007.jake",
+    "password": "jakejake007"
+  }
+}
+```
+
+#### Response
+
+```js
+{
+    "user": {
+        "username": "Jacob007",
+        "email": "jake@jake007.jake",
+        "token": "jwt token in form of x.y.z",
+        "coupons": [],
+        "address": [],
+        "order": [],
+        "fav": [],
+        "cart": {
+            "productId": [],
+            "_id": "5ea29f1766cdb22611d06d69",
+            "userId": "5ea29f1766cdb22611d06d68",
+            "createdAt": "2020-04-24T08:11:03.940Z",
+            "updatedAt": "2020-04-24T08:11:03.940Z",
+            "__v": 0
+        }
+    }
+}
+```
+
+---
+
+### 3.Update User Info
+
+#### Request
+
+Authentication as a user
+
+`PUT /api/v1/user`
+
+Body
+
+```js
+{
+  "user":{
+    "username": "Jacob008",
+    "image":"image url"
+  }
+}
+```
+
+#### Response
+
+```js
+{
+    "user": {
+        "username": "Jacob008",
+        "email": "jake@jake007.jake",
+        "image": "image url",
+        "coupons": [],
+        "address": [],
+        "order": [],
+        "fav": [],
+        "cart": "5ea29f1766cdb22611d06d69"
+    }
+}
+```
+
+---
+
+### 4.Add item to cart
+
+#### Request
+
+Authentication as a user
+
+`POST /api/v1/user/cart`
+
+Body
+
+```js
+{
+  "product":{
+    "id": "5ea28db466cdb22611d06d61"
+  }
+}
+```
+
+Header
+
+```js
+Authorization = token;
+```
+
+#### Response
+
+```js
+{
+    "cart": {
+        "product": [
+            {
+                "varient": {
+                    "genere": [
+                        "none"
+                    ],
+                    "gender": "all",
+                    "ageGroup": "all",
+                    "weight": 5,
+                    "color": "black green"
+                },
+                "image": [
+                    "String"
+                ],
+                "discription": [
+                    "hey this is super confy"
+                ],
+                "review": [],
+                "_id": "5ea28db466cdb22611d06d61",
+                "category": "furniture2",
+                "subCatogery": "chair2",
+                "name": "super comfy2",
+                "price": 5005,
+                "brand": "no soo000 comfy",
+                "stars": 4.5,
+                "seller": "unknown",
+                "soldCount": 2005,
+                "discount": 20,
+                "size": "big",
+                "quantity": 900,
+                "createdAt": "2020-04-24T06:56:52.439Z",
+                "updatedAt": "2020-04-24T06:56:52.439Z",
+                "__v": 0
+            }
+        ],
+        "_id": "5ea29f1766cdb22611d06d69",
+        "userId": "5ea29f1766cdb22611d06d68",
+        "createdAt": "2020-04-24T08:11:03.940Z",
+        "updatedAt": "2020-04-24T08:32:57.108Z",
+        "__v": 0
+    }
+}
+```
+
+---
+
+### 5.Get All items to cart
+
+#### Request
+
+Authentication as a user
+
+`GET /api/v1/user/cart`
+
+Body
+
+```js
+[empty];
+```
+
+Header
+
+```js
+Authorization = token;
+```
+
+#### Response
+
+```js
+{
+    "cart": {
+        "product": [
+            {
+                "varient": {
+                    "genere": [
+                        "none"
+                    ],
+                    "gender": "all",
+                    "ageGroup": "all",
+                    "weight": 5,
+                    "color": "black"
+                },
+                "image": [
+                    "String"
+                ],
+                "discription": [
+                    "hey this is super confy"
+                ],
+                "review": [],
+                "_id": "5ea28db466cdb22611d06d63",
+                "category": "furniture4",
+                "subCatogery": "chair6",
+                "name": "super comfy89",
+                "price": 5000,
+                "brand": "no soo comfy",
+                "stars": 4.5,
+                "seller": "unknown",
+                "soldCount": 200,
+                "discount": 20,
+                "size": "big",
+                "quantity": 900,
+                "createdAt": "2020-04-24T06:56:52.470Z",
+                "updatedAt": "2020-04-24T06:56:52.470Z",
+                "__v": 0
+            },
+            {
+                "varient": {
+                    "genere": [
+                        "none"
+                    ],
+                    "gender": "all",
+                    "ageGroup": "all",
+                    "weight": 5,
+                    "color": "black green"
+                },
+                "image": [
+                    "String"
+                ],
+                "discription": [
+                    "hey this is super confy"
+                ],
+                "review": [],
+                "_id": "5ea28db466cdb22611d06d61",
+                "category": "furniture2",
+                "subCatogery": "chair2",
+                "name": "super comfy2",
+                "price": 5005,
+                "brand": "no soo000 comfy",
+                "stars": 4.5,
+                "seller": "unknown",
+                "soldCount": 2005,
+                "discount": 20,
+                "size": "big",
+                "quantity": 900,
+                "createdAt": "2020-04-24T06:56:52.439Z",
+                "updatedAt": "2020-04-24T06:56:52.439Z",
+                "__v": 0
+            }
+        ],
+        "_id": "5ea2a66978cd3a3191a8dd12",
+        "userId": "5ea2a66978cd3a3191a8dd11",
+        "createdAt": "2020-04-24T08:42:17.550Z",
+        "updatedAt": "2020-04-24T08:45:38.146Z",
+        "__v": 0
+    }
+}
+```
+
+---
+
+### 6.Remove item to cart
+
+#### Request
+
+Authentication as a user
+
+`DELETE /api/v1/user/cart`
+
+Body
+
+```js
+{
+  "product":{
+    "id": "5ea28db466cdb22611d06d61"
+  }
+}
+```
+
+Header
+
+```js
+Authorization = token;
+```
+
+#### Response
+
+```js
+{
+    "msg": "product removed"
+}
+```
+
+---
+
+### 7.Add comment to a product
+
+#### Request
+
+Authentication as a user is required
+
+`POST /api/v1/comments`
+
+Body
+
+```js
+{
+	"comment": {
+		"stars":"4.5",
+		"body":"this is a test comments60",
+		"productId":"5ea28db466cdb22611d06d61"
+	}
+}
+```
+
+Header
+
+```js
+Authorization = token;
+```
+
+#### Response
+
+```js
+{
+    "comment": [
+        {
+            "id": "5ea2aaba755df0343f643069",
+            "productId": "5ea28db466cdb22611d06d61",
+            "body": "this is a test comments60",
+            "stars": 4.5,
+            "username": "Jacob0008"
+        }
+    ]
+}
+```
+
+---
+
+### 8.Get all comments of a product
+
+#### Request
+
+Authentication as a user is not required
+
+`GET /api/v1/comments`
+
+Body
+
+```js
+{
+	"comment": {
+		"productId":"5ea28db466cdb22611d06d61"
+	}
+}
+```
+
+Header
+
+```js
+Authorization = token;
+```
+
+#### Response
+
+```js
+{
+    "comments": [
+        {
+            "id": "5ea2aa6d755df0343f643067",
+            "productId": "5ea28db466cdb22611d06d61",
+            "body": "this is a test comments58",
+            "stars": 4.5,
+            "username": "Jacob2555"
+        },
+        {
+            "id": "5ea2aaba755df0343f643069",
+            "productId": "5ea28db466cdb22611d06d61",
+            "body": "this is a test comments60",
+            "stars": 4.5,
+            "username": "Jacob0008"
+        }
+    ]
+}
+```
+
+---
+
+### 9.Update comments of a product
+
+#### Request
+
+Authentication as a user is required
+
+`PUT /api/v1/comments`
+
+Body
+
+```js
+{
+	"comment": {
+		 "id": "5ea2aaba755df0343f643069",
+      "productId": "5ea28db466cdb22611d06d61",
+      "body": "this is a test for updated  comments nnnn",
+      "stars": 4.5
+	}
+}
+```
+
+Header
+
+```js
+Authorization = token;
+```
+
+#### Response
+
+```js
+{
+    "comment": [
+        {
+            "id": "5ea2aaba755df0343f643069",
+            "productId": "5ea28db466cdb22611d06d61",
+            "body": "this is a test for updated  comments nnnn",
+            "stars": 4.5,
+            "username": "Jacob0008"
+        }
+    ]
+}
+```
+
+---
+
+### 10.Delete comments of a product
+
+#### Request
+
+Authentication as a user is required
+
+`DELETE /api/v1/comments`
+
+Body
+
+```js
+{
+	"comment": {
+		 "id": "5ea2aaba755df0343f643069",
+         "productId": "5ea28db466cdb22611d06d61"
+	}
+}
+```
+
+Header
+
+```js
+Authorization = token;
+```
+
+#### Response
+
+```js
+{
+  msg: "comment deleted";
+}
+```
+
+---
+
+### 11.Add User Address
+
+#### Request
+
+Authentication as a user is required
+
+`POST /api/v1/user/address`
+
+Body
+
+```js
+{
+  "address":{
+   "address": {
+      "name": "String23",
+      "sonOf": "String23",
+      "mobNumber": "552423455445",
+      "address1": "String2323",
+      "address2": "String2323",
+      "area": "String3232",
+      "district": "String2323",
+      "state": "String2323",
+      "pinCode": "524545232322"
+    }
+  }
+}
+```
+
+Header
+
+```js
+Authorization = token;
+```
+
+#### Response
+
+```js
+{
+    "address": [
+        {
+            "_id": "5ea2af8b8e2065378de36cf4",
+            "address": {
+                "name": "String23",
+                "sonOf": "String23",
+                "mobNumber": 552423455445,
+                "address1": "String2323",
+                "address2": "String2323",
+                "area": "String3232",
+                "district": "String2323",
+                "state": "String2323",
+                "pinCode": 524545232322
+            },
+            "resident": "5ea2a66978cd3a3191a8dd11",
+            "createdAt": "2020-04-24T09:21:16.014Z",
+            "updatedAt": "2020-04-24T09:21:16.014Z",
+            "__v": 0
+        },
+        {
+            "_id": "5ea2af8c8e2065378de36cf5",
+            "createdAt": "2020-04-24T09:21:16.014Z",
+            "updatedAt": "2020-04-24T09:21:16.014Z",
+            "__v": 0
+        }
+    ]
+}
+```
+
+---
+
+### 12.Get All User's Address
+
+#### Request
+
+Authentication as a user is required
+
+`POST /api/v1/user/address`
+
+Body
+
+```js
+[empty];
+```
+
+Header
+
+```js
+Authorization = token;
+```
+
+#### Response
+
+```js
+{
+    "address": [
+        {
+            "address": {
+                "name": "String23",
+                "sonOf": "String23",
+                "mobNumber": 552423455445,
+                "address1": "String2323",
+                "address2": "String2323",
+                "area": "String3232",
+                "district": "String2323",
+                "state": "String2323",
+                "pinCode": 524545232322
+            },
+            "_id": "5ea2af8b8e2065378de36cf4",
+            "resident": "5ea2a66978cd3a3191a8dd11",
+            "createdAt": "2020-04-24T09:21:16.014Z",
+            "updatedAt": "2020-04-24T09:21:16.014Z",
+            "__v": 0
+        },
+        {
+            "address": {
+                "name": "String234",
+                "sonOf": "String234",
+                "mobNumber": 5524234554454,
+                "address1": "String23234",
+                "address2": "String23234",
+                "area": "String32324",
+                "district": "String23234",
+                "state": "String23234",
+                "pinCode": 5245452323224
+            },
+            "_id": "5ea2b0df8e2065378de36cf6",
+            "resident": "5ea2a66978cd3a3191a8dd11",
+            "createdAt": "2020-04-24T09:26:55.878Z",
+            "updatedAt": "2020-04-24T09:26:55.878Z",
+            "__v": 0
+        }
+    ]
+}
+```
+
+---
+
+### 13.Update User's Address
+
+#### Request
+
+Authentication as a user is required
+
+`PUT /api/v1/user/address`
+
+Body
+
+```js
+{
+  "address":{
+  	"id":"5ea2af8b8e2065378de36cf4",
+   "address": {
+      "name": "this is an updated address",
+      "sonOf": "String23",
+      "mobNumber": "552423455445",
+      "address1": "String2323",
+      "address2": "String2323",
+      "area": "String3232",
+      "district": "String2323",
+      "state": "String2323",
+      "pinCode": "524545232322"
+    }
+  }
+}
+```
+
+Header
+
+```js
+Authorization = token;
+```
+
+#### Response
+
+```js
+{
+    "address": {
+        "address": {
+            "name": "this is an updated address",
+            "sonOf": "String23",
+            "mobNumber": 552423455445,
+            "address1": "String2323",
+            "address2": "String2323",
+            "area": "String3232",
+            "district": "String2323",
+            "state": "String2323",
+            "pinCode": 524545232322
+        },
+        "_id": "5ea2af8b8e2065378de36cf4",
+        "resident": "5ea2a66978cd3a3191a8dd11",
+        "createdAt": "2020-04-24T09:21:16.014Z",
+        "updatedAt": "2020-04-24T09:31:13.357Z",
+        "__v": 0
+    }
+}
+```
+
+---
+
+### 13.Delete User's Address
+
+#### Request
+
+Authentication as a user is required
+
+`DELETE /api/v1/user/address`
+
+Body
+
+```js
+{
+  "address":{
+  	"id":"5ea2af8b8e2065378de36cf4"
+  }
+}
+```
+
+Header
+
+```js
+Authorization = token;
+```
+
+#### Response
+
+```js
+{
+    "msg": "Address deleted"
+}
+```
+
+---
