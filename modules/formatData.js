@@ -18,6 +18,7 @@ exports.userData = (user, token) => {
 
 exports.adminAllUser = (user) => {
   return {
+    id: user.id,
     username: user.username,
     email: user.email,
     image: user.image,

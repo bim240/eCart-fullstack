@@ -20,7 +20,7 @@ var ProductSchema = new Schema(
     varient: {
       gender: String,
       ageGroup: String,
-      genere: String,
+      genere: [String],
       weight: Number,
       color: String,
     },
