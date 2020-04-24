@@ -1852,7 +1852,7 @@ Header
 
 ## Error Message
 
-### Foramt of all the error
+### Format of all the error
 
 ```js
 {
