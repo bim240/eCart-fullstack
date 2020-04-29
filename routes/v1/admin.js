@@ -4,7 +4,7 @@ var adminController = require("../../controller/v1/admin");
 var Auth = require("../../modules/auth");
 var itemController = require("../../controller/v1/items");
 
-router.get("/user/login", adminController.login);
+router.post("/user/login", adminController.login);
 router.post("/add", Auth.adminAuth, adminController.addNewItems);
 router.get("/all", Auth.adminAuth, adminController.getAllItems);
 router.put("/update", Auth.adminAuth, adminController.updateItem);

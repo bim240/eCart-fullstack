@@ -6,10 +6,29 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 
 var indexRouter = require("./routes/v1/index");
+var reactRouter = require("./routes/v1/react");
 var passport = require("passport");
 require("dotenv").config();
 
 require("./modules/passport");
+
+var app = express();
+app.use(passport.initialize());
+// Webpack Configuration
+if (process.env.NODE_ENV === "development") {
+  const webpack = require("webpack");
+  const webpackConfig = require("./webpack.config");
+  const compiler = webpack(webpackConfig);
+
+  app.use(
+    require("webpack-dev-middleware")(compiler, {
+      noInfo: true,
+      publicPath: webpackConfig.output.publicPath,
+    })
+  );
+
+  app.use(require("webpack-hot-middleware")(compiler));
+}
 // connect to database
 mongoose.connect(
   "mongodb://localhost/cart",
@@ -22,12 +41,9 @@ mongoose.connect(
   }
 );
 
-var app = express();
-app.use(passport.initialize());
-
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "jade");
+app.set("view engine", "ejs");
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -36,6 +52,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/api/v1", indexRouter);
+app.use("/", reactRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

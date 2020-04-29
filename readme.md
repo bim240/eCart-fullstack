@@ -7,7 +7,7 @@
 
 #### Request
 
-`GET /api/v1/admin/user/login`
+`POST /api/v1/admin/user/login`
 
 Body
 

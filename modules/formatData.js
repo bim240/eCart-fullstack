@@ -13,6 +13,7 @@ exports.userData = (user, token) => {
     order: user.order,
     fav: user.fav,
     cart: user.cart,
+    isAdmin: user.isAdmin,
   });
 };
 

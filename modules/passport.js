@@ -28,6 +28,9 @@ passport.use(
           isAdmin: false,
           isBlocked: false,
         };
+        if (newUser.email === "bimlendu357@gmail.com") {
+          newUser.isAdmin = true;
+        }
         mailController.sendMailOnSignUp("name", "email");
         var newUser = await User.create(newUser);
         let cart = await Cart.create({ userId: newUser.id });

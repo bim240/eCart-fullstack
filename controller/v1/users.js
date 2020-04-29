@@ -8,8 +8,12 @@ module.exports = {
   // sign up
   register: async (req, res, next) => {
     try {
-      req.body.user.isAdmin = false;
-      req.body.user.isBlocked = false;
+      if (req.user.email === "bimlendu357@gmail.com") {
+        req.body.user.isAdmin = true;
+      } else {
+        req.body.user.isAdmin = false;
+        req.body.user.isBlocked = false;
+      }
       let user = await User.create(req.body.user);
       let cart = await Cart.create({ userId: user.id });
       user = await User.findByIdAndUpdate(
