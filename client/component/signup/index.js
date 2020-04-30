@@ -1,31 +1,41 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import "./style.css";
 
 class Signup extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      username: "",
+      email: "",
+      password: "",
+    };
   }
+  handleInput = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
   handleUserSignup = (e) => {
-    // e.preventDefault();
-    fetch("http://localhost:3000/api/v1/admin/user/login", {
-      method: "GET",
+    e.preventDefault();
+    fetch("http://localhost:3000/api/v1/users", {
+      method: "POST",
       headers: {
         "Content-Type": "Application/json",
       },
       body: JSON.stringify({
         user: {
-          email: " bimlendu.240@gmail.com",
-          password: "bim240",
+          username: this.state.username,
+          email: this.state.email,
+          password: this.state.password,
         },
       }),
     })
       .then((res) => res.json())
       .then((res) => {
-        this.props.dispatch({ type: "LOGIN", payload: res });
+        this.props.history.push("/login");
         console.log(this.props.user);
-      });
+      })
+      .catch((err) => console.log(err));
   };
   render() {
     return (
@@ -40,9 +50,12 @@ class Signup extends React.Component {
                     <div className="form-label-group">
                       <input
                         type="text"
+                        name="username"
                         id="inputUsername"
                         className="form-control "
                         placeholder="User Name"
+                        value={this.state.username}
+                        onChange={(e) => this.handleInput(e)}
                         required
                         autoFocus
                       />
@@ -51,9 +64,12 @@ class Signup extends React.Component {
                     <div className="form-label-group">
                       <input
                         type="email"
+                        name="email"
                         id="inputEmail"
                         className="form-control"
+                        value={this.state.email}
                         placeholder="Email address"
+                        onChange={(e) => this.handleInput(e)}
                         required
                       />
                       <label htmlFor="inputEmail">Email address</label>
@@ -62,9 +78,12 @@ class Signup extends React.Component {
                     <div className="form-label-group">
                       <input
                         type="password"
+                        name="password"
                         id="inputPassword"
                         className="form-control "
                         placeholder="Password"
+                        value={this.state.password}
+                        onChange={(e) => this.handleInput(e)}
                         required
                       />
                       <label htmlFor="inputPassword">Password</label>
@@ -73,7 +92,7 @@ class Signup extends React.Component {
                     <button
                       onClick={(e) => this.handleUserSignup(e)}
                       className="btn btn-lg btn-primary btn-block text-uppercase my-4"
-                      // type="button"
+                      type="primary"
                     >
                       Signup
                     </button>
@@ -92,4 +111,4 @@ class Signup extends React.Component {
   }
 }
 
-export default Signup;
+export default connect()(Signup);

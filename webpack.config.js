@@ -54,4 +54,7 @@ module.exports = {
       filename: "bundle.css",
     }),
   ],
+  devServer: {
+    historyApiFallback: true,
+  },
 };

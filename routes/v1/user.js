@@ -7,6 +7,7 @@ var cartController = require("../../controller/v1/cart");
 var addressController = require("../../controller/v1/address");
 var orderController = require("../../controller/v1/order");
 
+router.get("/", Auth.userAuth, userController.getUserInfo);
 router.put("/", Auth.userAuth, userController.updateUserInfo);
 router.get("/fav", Auth.userAuth, userController.getAllFav);
 router.post("/fav", Auth.userAuth, userController.addToFavList);

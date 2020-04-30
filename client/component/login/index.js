@@ -12,6 +12,7 @@ class Login extends React.Component {
     };
   }
   handleInput = (field, value) => {
+    console.log("hey");
     if (field === "email") {
       this.setState({ email: value });
     } else if (field === "password") {
@@ -36,8 +37,10 @@ class Login extends React.Component {
     })
       .then((res) => res.json())
       .then((res) => {
+        // console.log(res.user.token);
+        localStorage.setItem("login-token", res.user.token);
         this.props.dispatch({ type: "LOGIN", payload: res });
-        console.log(this.props.user, res, "---------------");
+        // console.log(this.props.user, res, "---------------");
         this.props.history.push("/");
       })
       .catch((err) => console.log(err));

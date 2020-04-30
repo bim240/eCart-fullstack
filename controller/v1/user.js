@@ -5,6 +5,17 @@ var Cart = require("../../models/cart");
 var Comment = require("../../models/comment");
 
 module.exports = {
+  getUserInfo: async (req, res, next) => {
+    try {
+      var userinfo = await User.findById(req.user.userId);
+      var token = req.headers["authorization"] || "";
+      userinfo.token = token;
+      userinfo = FormatData.userData(userinfo);
+      res.status(200).json({ user: userinfo });
+    } catch (error) {
+      next(error);
+    }
+  },
   // update user info
   updateUserInfo: async (req, res, next) => {
     try {
