@@ -148,7 +148,7 @@ Body
 ```js
 {
 	"user": {
-		"id":"5e9f172fe2c4126db70cb258"
+		"id":"5ea9ab25070bb275f177ad82"
 	}
 }
 ```
@@ -163,7 +163,17 @@ Authorization = token;
 
 ```js
 {
-    "msg": "Jacob2555 is now blocked"
+    "updatedUser": {
+        "id": "5ea9ab25070bb275f177ad82",
+        "username": "Jacob0008",
+        "email": "jake@jake008.jake",
+        "coupons": [],
+        "address": [],
+        "order": [],
+        "fav": [],
+        "cart": "5ea9ab26070bb275f177ad83",
+        "isBlocked": true
+    }
 }
 ```
 
@@ -197,7 +207,17 @@ Authorization = token;
 
 ```js
 {
-    "msg": "Jacob2555 is now unblocked"
+    "updatedUser": {
+        "id": "5ea9ab25070bb275f177ad82",
+        "username": "Jacob0008",
+        "email": "jake@jake008.jake",
+        "coupons": [],
+        "address": [],
+        "order": [],
+        "fav": [],
+        "cart": "5ea9ab26070bb275f177ad83",
+        "isBlocked": false
+    }
 }
 ```
 

@@ -1,6 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getAllUserInfo } from "../../store/actions/admin/adminCRUDonUsers";
+import {
+  getAllUserInfo,
+  blockUnblockUser,
+} from "../../store/actions/admin/adminCRUDonUsers";
 
 class AdminHome extends React.Component {
   constructor(props) {
@@ -12,6 +15,9 @@ class AdminHome extends React.Component {
     // console.log(getAllUsers);
     this.props.dispatch(getAllUserInfo());
   }
+  handleBlock = (user) => {
+    this.props.dispatch(blockUnblockUser(user));
+  };
   render() {
     return (
       <>
@@ -65,7 +71,7 @@ class AdminHome extends React.Component {
                                   ? "border-danger"
                                   : "border-success"
                               }`}
-                              // style={{ maxWidth: "540px" }}
+                              style={{ maxWidth: "540px" }}
                             >
                               <div className="row no-gutters">
                                 <div className="col-md-4">
@@ -86,6 +92,7 @@ class AdminHome extends React.Component {
                                     </h5>
                                     <p class="card-text">{user.email}</p>
                                     <button
+                                      onClick={() => this.handleBlock(user)}
                                       type="button"
                                       className={`btn ${
                                         user.isBlocked

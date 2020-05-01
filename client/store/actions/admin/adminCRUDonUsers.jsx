@@ -10,7 +10,48 @@ export function getAllUserInfo() {
       .then((res) => res.json())
       .then((res) => {
         dispatch({ type: "ALL_USER", payload: res.allUsers });
-        console.log(res.allUsers, "inside action");
+        // console.log(res.allUsers, "inside action");
       });
+  };
+}
+
+export function blockUnblockUser(user) {
+  return function (dispatch) {
+    if (user.isBlocked) {
+      fetch("http://localhost:3000/api/v1/admin/allUsers/unBlock", {
+        method: "POST",
+        headers: {
+          "Content-Type": "Application/json",
+          authorization: `${localStorage["login-token"]}`,
+        },
+        body: JSON.stringify({
+          user: {
+            id: user.id,
+          },
+        }),
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          dispatch({ type: "UPDATE", payload: res.updatedUser });
+        });
+    } else {
+      fetch("http://localhost:3000/api/v1/admin/allUsers/block", {
+        method: "POST",
+        headers: {
+          "Content-Type": "Application/json",
+          authorization: `${localStorage["login-token"]}`,
+        },
+        body: JSON.stringify({
+          user: {
+            id: user.id,
+          },
+        }),
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          dispatch({ type: "UPDATE", payload: res.updatedUser });
+        });
+    }
+    console.log(user.id);
   };
 }

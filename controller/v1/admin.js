@@ -94,22 +94,34 @@ module.exports = {
       next(error);
     }
   },
+  // block a user
   blockUser: async (req, res, next) => {
     try {
-      var blockedUser = await User.findByIdAndUpdate(req.body.user.id, {
-        isBlocked: true,
-      });
-      res.status(200).json({ msg: `${blockedUser.username} is now blocked` });
+      var blockedUser = await User.findByIdAndUpdate(
+        req.body.user.id,
+        {
+          isBlocked: true,
+        },
+        { new: true }
+      );
+      var updatedUser = FormatData.adminAllUser(blockedUser);
+      res.status(200).json({ updatedUser });
     } catch (error) {
       next(error);
     }
   },
+  // unblock a user
   unBlockUser: async (req, res, next) => {
     try {
-      var blockedUser = await User.findByIdAndUpdate(req.body.user.id, {
-        isBlocked: false,
-      });
-      res.status(200).json({ msg: `${blockedUser.username} is now unblocked` });
+      var blockedUser = await User.findByIdAndUpdate(
+        req.body.user.id,
+        {
+          isBlocked: false,
+        },
+        { new: true }
+      );
+      var updatedUser = FormatData.adminAllUser(blockedUser);
+      res.status(200).json({ updatedUser });
     } catch (error) {
       next(error);
     }
