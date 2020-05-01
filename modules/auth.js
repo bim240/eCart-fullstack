@@ -14,6 +14,7 @@ module.exports = {
   },
   userAuth: async (req, res, next) => {
     var token = req.headers["authorization"] || "";
+    // console.log(token, "herders log inside userauth");
     try {
       if (token) {
         var payload = await jwt.verify(token, process.env.SECRET);

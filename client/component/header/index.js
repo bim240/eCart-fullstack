@@ -9,7 +9,12 @@ class Header extends React.Component {
     super(props);
     this.state = {};
   }
+  handleLogout = () => {
+    localStorage.clear();
+    this.props.dispatch({ type: "LOGOUT", payload: "" });
+  };
   render() {
+    // console.log(this.props.user ? this.props.user : "", "header");
     return (
       <div className="bg_header ">
         <div
@@ -75,30 +80,50 @@ class Header extends React.Component {
                     </div>
                   </form>
                 </li>
-                <li className="nav-item active">
-                  <Link
-                    to="/login"
-                    className=" nav-link ml-3 text-light font-weight-bold"
-                  >
-                    Login
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/register"
-                    className=" nav-link ml-3 text-light font-weight-bold"
-                  >
-                    Signup
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="google.com"
-                    className="nav-link ml-3 text-light font-weight-bold"
-                  >
-                    Logout
-                  </Link>
-                </li>
+                {!this.props.user ? (
+                  <>
+                    <li className="nav-item ">
+                      <Link
+                        to="/login"
+                        className=" nav-link ml-3 text-light font-weight-bold"
+                      >
+                        Login
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/register"
+                        className=" nav-link ml-3 text-light font-weight-bold"
+                      >
+                        Signup
+                      </Link>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    {this.props.user.isAdmin ? (
+                      <li>
+                        <Link
+                          to="/admin"
+                          className="nav-link ml-3 text-light font-weight-bold"
+                        >
+                          Admin
+                        </Link>
+                      </li>
+                    ) : (
+                      ""
+                    )}
+                    <li>
+                      <Link
+                        to="/"
+                        onClick={this.handleLogout}
+                        className="nav-link ml-3 text-light font-weight-bold"
+                      >
+                        Logout
+                      </Link>
+                    </li>
+                  </>
+                )}
                 <li>
                   <Link
                     to="cart"
@@ -130,7 +155,7 @@ class Header extends React.Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state);
+  // console.log(state);
   return {
     user: state.User.UserInfo,
   };

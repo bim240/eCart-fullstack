@@ -12,18 +12,32 @@ class Login extends React.Component {
     };
   }
   handleInput = (field, value) => {
-    console.log("hey");
     if (field === "email") {
       this.setState({ email: value });
     } else if (field === "password") {
       this.setState({ password: value });
     }
   };
-  userLogin = (e) => {
-    console.log(this.state.email, this.state.password);
-    // const data = { email: this.state.email, password: this.state.password };
+  handleGitHubLogin = (e) => {
     e.preventDefault();
-    fetch("http://localhost:3000/api/v1/admin/user/login", {
+    fetch("http://localhost:3000/api/v1/users/auth/github", {
+      method: "GET",
+      headers: {
+        "Content-Type": "Application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        localStorage.setItem("login-token", res.user.token);
+        this.props.dispatch({ type: "LOGIN", payload: res.user });
+
+        this.props.history.push("/");
+      })
+      .catch((err) => console.log(err));
+  };
+  userLogin = (e) => {
+    e.preventDefault();
+    fetch("http://localhost:3000/api/v1/users/login", {
       method: "POST",
       headers: {
         "Content-Type": "Application/json",
@@ -37,16 +51,19 @@ class Login extends React.Component {
     })
       .then((res) => res.json())
       .then((res) => {
-        // console.log(res.user.token);
-        localStorage.setItem("login-token", res.user.token);
-        this.props.dispatch({ type: "LOGIN", payload: res });
-        // console.log(this.props.user, res, "---------------");
-        this.props.history.push("/");
+        if (res.user) {
+          localStorage.setItem("login-token", res.user.token);
+          this.props.dispatch({ type: "LOGIN", payload: res.user });
+
+          this.props.history.push("/");
+        } else {
+          console.log("wrong request");
+          his.props.history.push("/");
+        }
       })
       .catch((err) => console.log(err));
   };
   render() {
-    // console.log(this.state.email, this.state.password);
     return (
       <section className="bg_login">
         <div className="container">
@@ -108,15 +125,11 @@ class Login extends React.Component {
                       Sign in
                     </button>
                     <hr className="my-4" />
-                    {/* <button
-                      className="btn btn-lg btn-google btn-block text-uppercase"
-                      type="submit"
-                    >
-                      <i className="fab fa-google mr-2"></i> Sign in with Google
-                    </button> */}
+
                     <button
+                      onClick={(e) => this.handleGitHubLogin(e)}
                       className="btn btn-lg btn-dark btn-block text-uppercase"
-                      type="submit"
+                      type="primary"
                     >
                       <i className="fab fa-github mr-2"></i> Sign in with GitHub
                     </button>

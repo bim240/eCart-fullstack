@@ -6,7 +6,6 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 
 var indexRouter = require("./routes/v1/index");
-var reactRouter = require("./routes/v1/react");
 var passport = require("passport");
 require("dotenv").config();
 
@@ -54,7 +53,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/api/v1", indexRouter);
-app.use("/", reactRouter);
+app.use("/", indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
