@@ -72,7 +72,7 @@ module.exports = {
   deleteItem: async (req, res, next) => {
     try {
       var deletedItem = await Product.findByIdAndDelete(req.body.item.id);
-      res.status(200).json({ msg: "success" });
+      res.status(200).json({ product: deletedItem });
     } catch (error) {
       next(error);
     }

@@ -4,19 +4,31 @@ import {
   getAllUserInfo,
   blockUnblockUser,
 } from "../../store/actions/admin/adminCRUDonUsers";
+import {
+  getAllProducts,
+  deleteProduct,
+} from "../../store/actions/admin/adminCRUDonProducts";
 
 class AdminHome extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
-
+  // sdm
   componentDidMount() {
     // console.log(getAllUsers);
     this.props.dispatch(getAllUserInfo());
+    this.props.dispatch(getAllProducts());
   }
+  // block a user
+
   handleBlock = (user) => {
     this.props.dispatch(blockUnblockUser(user));
+  };
+  // delte a user
+  handleDeleteItem = (product) => {
+    // console.log(product._id);
+    this.props.dispatch(deleteProduct(product));
   };
   render() {
     return (
@@ -119,7 +131,55 @@ class AdminHome extends React.Component {
               role="tabpanel"
               aria-labelledby="nav-profile-tab"
             >
-              all the product
+              <div className="container my-3">
+                <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+                  {this.props.allProductInfo
+                    ? this.props.allProductInfo.map((product) => {
+                        return (
+                          <div className="col m-4">
+                            <div className="card" style={{ width: "18rem" }}>
+                              <img
+                                src="https://www.creativefabrica.com/wp-content/uploads/2018/05/Classical-furniture-SVG-DXF-EPS-PNG-AI-by-retrowalldecor.jpg"
+                                className="card-img-top"
+                                alt="..."
+                              />
+                              <div className="card-body">
+                                <h5 className="card-title">
+                                  Name : {product.name}
+                                </h5>
+                              </div>
+                              <ul className="list-group list-group-flush">
+                                <li className="list-group-item">
+                                  Category : {product.category}
+                                </li>
+                                <li className="list-group-item">
+                                  Sub Category : {product.subCatogery}
+                                </li>
+                                <li className="list-group-item">
+                                  Brand : {product.brand}{" "}
+                                </li>
+                                <li className="list-group-item">
+                                  Price : {product.price}{" "}
+                                </li>
+                              </ul>
+                              <div className="card-body">
+                                <button className="btn btn-success mr-3">
+                                  Update
+                                </button>
+                                <button
+                                  className="btn btn-danger"
+                                  onClick={() => this.handleDeleteItem(product)}
+                                >
+                                  Delete
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })
+                    : ""}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -128,9 +188,20 @@ class AdminHome extends React.Component {
   }
 }
 
+function filterProducts(products, key) {
+  console.log(products, "indide filter products");
+  if (key === "all") {
+    return products;
+  }
+}
 function mapStateToProps(state) {
+  console.log(state.AdminOnProducts.filterKey, "insode adminHome");
   return {
     allUsersInfo: state.AdminOnUser.allUser,
+    allProductInfo: filterProducts(
+      state.AdminOnProducts.allProduct,
+      state.AdminOnProducts.filterKey
+    ),
   };
 }
 export default connect(mapStateToProps)(AdminHome);

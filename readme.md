@@ -724,7 +724,7 @@ Body
 ```js
 {
 	"item" : {
-		"id":"5ea28db466cdb22611d06d62"
+		"id":"5eabf775079a3a41f3640672"
 	}
 }
 ```
@@ -739,7 +739,39 @@ Authorization = token;
 
 ```js
 {
-    "msg": "success"
+    "product": {
+        "varient": {
+            "genere": [
+                "none"
+            ],
+            "gender": "all",
+            "ageGroup": "all",
+            "weight": 5,
+            "color": "black"
+        },
+        "image": [
+            "String"
+        ],
+        "discription": [
+            "hey this is super confy"
+        ],
+        "review": [],
+        "_id": "5eabf775079a3a41f3640672",
+        "category": "furniture3",
+        "subCatogery": "chair6",
+        "name": "super comfy89",
+        "price": 5000,
+        "brand": "no soo comfy",
+        "stars": 4.5,
+        "seller": "unknown",
+        "soldCount": 200,
+        "discount": 20,
+        "size": "big",
+        "quantity": 900,
+        "createdAt": "2020-05-01T10:18:29.069Z",
+        "updatedAt": "2020-05-01T10:18:29.069Z",
+        "__v": 0
+    }
 }
 ```
 
