@@ -6,6 +6,12 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 
 var indexRouter = require("./routes/v1/index");
+var usersRouter = require("./routes/v1/users");
+var itemsRouteer = require("./routes/v1/items");
+var adminRouter = require("./routes/v1/admin");
+var userRouter = require("./routes/v1/user");
+var commentRouter = require("./routes/v1/comment");
+
 var passport = require("passport");
 require("dotenv").config();
 
@@ -52,7 +58,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/api/v1", indexRouter);
+app.use("/api/v1/user", userRouter);
+app.use("/api/v1/users", usersRouter);
+app.use("/api/v1/items", itemsRouteer);
+app.use("/api/v1/admin", adminRouter);
+app.use("/api/v1/comments", commentRouter);
+// app.use("/api/v1", indexRouter);
 app.use("/", indexRouter);
 
 // catch 404 and forward to error handler

@@ -53,7 +53,7 @@ class App extends React.Component {
       })
         .then((res) => res.json())
         .then((res) => {
-          // console.log(res.user.token);
+          console.log(res.user.token);
           this.props.dispatch({ type: "LOGIN", payload: res.user });
           // console.log(this.props.user, res, "---------------");
           this.props.history.push("/");

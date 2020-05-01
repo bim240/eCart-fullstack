@@ -23,7 +23,7 @@ class Header extends React.Component {
         >
           {" "}
           <nav className="navbar navbar-expand-lg navbar-dark  ">
-            <Link to="google.com" className="navbar-brand font-weight-bolder ">
+            <Link to="/" className="navbar-brand font-weight-bolder ">
               <i style={{ color: "white" }} className="fas fa-dolly mr-1"></i>
               eCart
             </Link>
