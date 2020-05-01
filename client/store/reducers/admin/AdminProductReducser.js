@@ -10,6 +10,11 @@ export default function AdminProductReducer(state = initialState, action) {
         ...state,
         allProduct: action.payload,
       };
+    case "ADD":
+      return {
+        ...state,
+        allProduct: state.allProduct.concat(action.payload),
+      };
     case "DELETE":
       return {
         ...state,
