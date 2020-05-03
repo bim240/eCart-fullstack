@@ -1902,6 +1902,152 @@ Header
 
 ---
 
+### 2.Get all item
+
+#### Request
+
+Authentication as a user is not required
+
+`GET /api/v1/items`
+
+Body
+
+```js
+[empty];
+```
+
+Header
+
+```js
+[empty];
+```
+
+#### Response
+
+```js
+{
+    "products": [
+        {
+            "varient": {
+                "genere": [],
+                "gender": "male"
+            },
+            "image": [
+                "https://upload.wikimedia.org/wikipedia/commons/4/4f/To_Kill_a_Mockingbird_%28first_edition_cover%29.jpg"
+            ],
+            "discription": [],
+            "review": [],
+            "_id": "5eae79ba3430630c94a4ce36",
+            "category": "book",
+            "subCatogery": "fiction",
+            "name": "To Kill a Mockingbird",
+            "price": 499,
+            "brand": "kiwi",
+            "stars": 4.5,
+            "seller": "eCart",
+            "quantity": 200,
+            "createdAt": "2020-05-03T07:58:50.336Z",
+            "updatedAt": "2020-05-03T07:58:50.336Z",
+            "__v": 0
+        },
+        {
+            "varient": {
+                "genere": [],
+                "gender": "male"
+            },
+            "image": [
+                "https://cms.qz.com/wp-content/uploads/2017/11/lord-of-the-rings-e1510686480965.jpg?quality=75&strip=all&w=1400"
+            ],
+            "discription": [],
+            "review": [],
+            "_id": "5eae7a2c3430630c94a4ce37",
+            "category": "book",
+            "subCatogery": "fiction",
+            "name": "The Lord of the Rings",
+            "price": 399,
+            "brand": "kiwi",
+            "stars": 4.7,
+            "seller": "eCart",
+            "quantity": 200,
+            "createdAt": "2020-05-03T08:00:44.703Z",
+            "updatedAt": "2020-05-03T08:00:44.703Z",
+            "__v": 0
+        },
+        {
+            "varient": {
+                "genere": [],
+                "gender": "male"
+            },
+            "image": [
+                "https://geaugatheater.org/images/20192020header/gatsy_header.jpg"
+            ],
+            "discription": [],
+            "review": [],
+            "_id": "5eae7ab83430630c94a4ce38",
+            "category": "book",
+            "subCatogery": "fiction",
+            "name": "The Great Gatsby",
+            "price": 799,
+            "brand": "kiwi",
+            "stars": 4.5,
+            "seller": "eCart",
+            "quantity": 200,
+            "createdAt": "2020-05-03T08:03:04.471Z",
+            "updatedAt": "2020-05-03T08:03:04.471Z",
+            "__v": 0
+        },
+        {
+            "varient": {
+                "genere": [],
+                "gender": "male"
+            },
+            "image": [
+                "https://prodimage.images-bn.com/pimages/9781435159631_p2_v3_s550x406.jpg"
+            ],
+            "discription": [],
+            "review": [],
+            "_id": "5eae7b133430630c94a4ce39",
+            "category": "book",
+            "subCatogery": "fiction",
+            "name": "Pride and Prejudice",
+            "price": 899,
+            "brand": "kiwi",
+            "stars": 4.6,
+            "seller": "eCart",
+            "quantity": 200,
+            "createdAt": "2020-05-03T08:04:35.013Z",
+            "updatedAt": "2020-05-03T08:04:35.013Z",
+            "__v": 0
+        },
+        {
+            "varient": {
+                "genere": [],
+                "gender": "male"
+            },
+            "image": [
+                "https://i2.wp.com/www.raptisrarebooks.com/images/44341/anne-frank-the-diary-of-a-young-girl-first-edition.jpg?fit=1000%2C800&ssl=1"
+            ],
+            "discription": [],
+            "review": [],
+            "_id": "5eae7bfe3430630c94a4ce3a",
+            "category": "book",
+            "subCatogery": "fiction",
+            "name": "The Diary Of A Young Girl",
+            "price": 199,
+            "brand": "kiwi",
+            "stars": 4.6,
+            "seller": "eCart",
+            "quantity": 200,
+            "createdAt": "2020-05-03T08:08:30.023Z",
+            "updatedAt": "2020-05-03T08:08:30.023Z",
+            "__v": 0
+        },
+    ]
+}
+```
+
+---
+
 ## Error Message
 
 ### Format of all the error

@@ -14,7 +14,7 @@ export function getAllProducts() {
       });
   };
 }
-
+// add produdcts
 export function addProduct(productDetails) {
   console.log(productDetails, "inside action of oroduct");
   return function (dispatch) {

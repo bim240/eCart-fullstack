@@ -7,7 +7,7 @@ import Login from "./login";
 import Signup from "./signup";
 import Home from "./home";
 import AdminHome from "./admin/adminHome";
-// import "./sass/main.sass";
+// import "../sass/main.sass";
 
 function Auth(authProps) {
   return (

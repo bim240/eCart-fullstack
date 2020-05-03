@@ -22,7 +22,7 @@ class Additems extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   };
   handleSubmit = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     var formatedData = [
       {
         category: this.state.category,
@@ -40,6 +40,7 @@ class Additems extends React.Component {
       },
     ];
     this.props.dispatch(addProduct(formatedData));
+    this.setState("");
     // console.log(this.state);
   };
   render() {

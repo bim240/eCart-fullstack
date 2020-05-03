@@ -36,7 +36,7 @@ class AdminHome extends React.Component {
     return (
       <>
         {this.props.allUsersInfo ? (
-          <div className="container mt-3  text-dark font-weight-bold">
+          <div className="container-fluid mt-3  text-dark font-weight-bold">
             <nav>
               <div className="nav nav-tabs" id="nav-tab" role="tablist">
                 <a
@@ -147,7 +147,7 @@ class AdminHome extends React.Component {
                 role="tabpanel"
                 aria-labelledby="nav-profile-tab"
               >
-                <div className="container my-3">
+                <div className="container-fluid my-3">
                   <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4">
                     {this.props.allProductInfo
                       ? this.props.allProductInfo.map((product) => {
