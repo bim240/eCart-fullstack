@@ -5,15 +5,15 @@ import { Link } from "react-router-dom";
 const OneSection = (props) => {
   // console.log(props.categoreis, "one section");
   return (
-    <div className="mt-5">
+    <div className="mt-5 text-dark">
       {props.categories && props.allProduct
         ? props.categories.map((category) => {
             return (
               <div>
                 <div className="oneSection_title_show">
                   <h4 className="font-weight-bold">{category.name}</h4>
-                  <Link>
-                    <h6 className="ml-auto font-weight-bold">Show All</h6>
+                  <Link to={`/${category.name}`}>
+                    <h6 className="ml-auto font-weight-bold ">Show All</h6>
                   </Link>
                 </div>
                 <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3">
@@ -35,8 +35,12 @@ const OneSection = (props) => {
                               </div>
                               <div className="col-md-8">
                                 <div className="card-body font-weight-bold">
-                                  <p class="card-link">
-                                    {product.name}
+                                  <p class="card-link ">
+                                    <Link to={`/product/${product._id}`}>
+                                      <span className="text-dark">
+                                        {product.name}
+                                      </span>
+                                    </Link>
                                     <br />
                                     <small>
                                       price : <i class="fas fa-rupee-sign"></i>{" "}
@@ -61,15 +65,7 @@ const OneSection = (props) => {
 };
 
 function filterByCategory(products, filterkey = "") {
-  console.log(filterkey, "filterkey");
-  // return [0, 1, 2];
   if (products) {
-    // console.log(
-    //   products.filter(
-    //     (product) => product.category === filterkey.toString().toLowerCase()
-    //   ),
-    //   "inside filter"
-    // );
     return products
       .filter((product) => product.category === filterkey.name.toLowerCase())
       .splice(0, 3);

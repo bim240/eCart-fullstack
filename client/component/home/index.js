@@ -54,7 +54,7 @@ class Home extends React.Component {
                         <p>
                           {" "}
                           {category.name} <br />
-                          <Link>Show All</Link>
+                          <Link to={`/${category.name}`}>Show All</Link>
                         </p>
                       </div>
                     </div>

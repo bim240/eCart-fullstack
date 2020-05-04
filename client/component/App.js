@@ -7,12 +7,16 @@ import Login from "./login";
 import Signup from "./signup";
 import Home from "./home";
 import AdminHome from "./admin/adminHome";
-// import "../sass/main.sass";
+import SingleProductDetails from "./singleProductDetails";
+import "../scss/main.scss";
+import oneCategory from "./oneCategory";
 
 function Auth(authProps) {
   return (
     <Switch>
       <Route exact path="/" component={Home} />
+      <Route exact path="/product/:id" component={SingleProductDetails} />
+      <Route exact path="/product/:category" component={oneCategory} />
       {authProps.user.isAdmin ? (
         <>
           <Route exact path="/admin" component={AdminHome} />
@@ -30,6 +34,8 @@ function NoAuth() {
       <Route exact path="/" component={Home} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/register" component={Signup} />
+      <Route exact path="/product/:id" component={SingleProductDetails} />
+      <Route exact path="/:category" component={oneCategory} />
       <Route path="*" render={() => <h1>404 Page</h1>} />
     </Switch>
   );
