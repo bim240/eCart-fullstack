@@ -53,7 +53,7 @@ export function handleUserLogin(state, props) {
           props.history.push("/");
         } else {
           dispatch({ type: "ADD_ERROR", error: res.err });
-          console.log("wrong request");
+          // console.log("wrong request");
         }
       })
       .catch((err) => {
@@ -81,7 +81,7 @@ export function getUserInfo(props) {
       })
       .catch((err) => {
         // console.log(err);
-        dispatch({ type: "ADD_ERROR", error: res.err });
+        dispatch({ type: "ADD_ERROR", error: err.error });
       });
   };
 }

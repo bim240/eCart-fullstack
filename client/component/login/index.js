@@ -13,7 +13,7 @@ class Login extends React.Component {
     };
   }
   handleInput = (e) => {
-    console.log(e.target.name);
+    // console.log(e.target.name);
     this.setState({ [e.target.name]: e.target.value });
   };
   handleGitHubLogin = (e) => {
@@ -23,11 +23,17 @@ class Login extends React.Component {
     e.preventDefault();
     this.props.dispatch(handleUserLogin(this.state, this.props));
   };
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.error !== this.props.error) {
+      this.props.error ? this.props.dispatch({ type: "REMOVE_ERROR" }) : "";
+    }
+  }
   render() {
     return (
       <section className="bg_login">
         <div className="container">
           {this.props.error ? alert(this.props.error) : ""}
+
           <div className="row">
             <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
               <div className="card card-signin my-5">

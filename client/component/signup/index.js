@@ -21,6 +21,11 @@ class Signup extends React.Component {
     e.preventDefault();
     this.props.dispatch(handleUserSignup(this.state, this.props));
   };
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.error !== this.props.error) {
+      this.props.error ? this.props.dispatch({ type: "REMOVE_ERROR" }) : "";
+    }
+  }
 
   render() {
     return (
