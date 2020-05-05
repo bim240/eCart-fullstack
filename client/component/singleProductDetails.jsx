@@ -8,7 +8,7 @@ const SingleProductDetails = (props) => {
     props.dispatch(getAllProduct());
   }
   let product = findProductById(props.match.params.id, props);
-  console.log(product);
+  // console.log(product);
   return (
     <>
       {product ? (
@@ -141,7 +141,7 @@ const SingleProductDetails = (props) => {
                   <hr />
                   <a
                     href="#"
-                    className="btn btn-lg btn-primary text-uppercase mr-3"
+                    className="btn btn-lg btn-primary text-uppercase m-3"
                   >
                     {" "}
                     Buy now{" "}

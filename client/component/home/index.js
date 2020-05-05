@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { v4 as uuid } from "uuid";
 
 import { getAllProduct } from "../../store/actions/allProductAction";
 import OneSection from "./oneSection";
@@ -39,7 +40,7 @@ class Home extends React.Component {
         <div className="row row-cols-2 row-cols-sm-2 row-cols-md-3">
           {this.state.categories.map((category) => {
             return (
-              <div className="col ">
+              <div className="col" key={uuid()}>
                 <div className="card mb-3" style={{ maxWidth: "540px" }}>
                   <div className="row no-gutters">
                     <div className="col-md-5">

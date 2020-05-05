@@ -7,14 +7,14 @@ var userSchema = new Schema(
     username: {
       type: String,
       required: true,
-      // unique: true,
+      unique: true,
       minlength: 6,
       maxlength: 12,
     },
     email: {
       type: String,
       required: true,
-      // unique: true,
+      unique: true,
       lowercase: true,
       match: /@/,
     },

@@ -5,7 +5,7 @@ export function getAllProduct() {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log("inside actions");
+        // console.log("inside actions");
         dispatch({ type: "ALL_PRODUCT", payload: res.products });
       });
   };

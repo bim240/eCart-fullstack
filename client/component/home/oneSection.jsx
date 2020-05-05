@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { v4 as uuid } from "uuid";
 
 const OneSection = (props) => {
   // console.log(props.categoreis, "one section");
@@ -9,7 +10,7 @@ const OneSection = (props) => {
       {props.categories && props.allProduct
         ? props.categories.map((category) => {
             return (
-              <div>
+              <div key={uuid()}>
                 <div className="oneSection_title_show">
                   <h4 className="font-weight-bold">{category.name}</h4>
                   <Link to={`/${category.name}`}>
@@ -20,7 +21,7 @@ const OneSection = (props) => {
                   {filterByCategory(props.allProduct, category).map(
                     (product) => {
                       return (
-                        <div className="col mb-4">
+                        <div className="col mb-4" key={uuid()}>
                           <div
                             className="card mb-3"
                             style={{ maxWidth: "540px" }}

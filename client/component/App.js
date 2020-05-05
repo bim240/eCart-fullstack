@@ -16,10 +16,10 @@ function Auth(authProps) {
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/product/:id" component={SingleProductDetails} />
-      <Route exact path="/product/:category" component={oneCategory} />
+      <Route exact path="/:category" component={oneCategory} />
       {authProps.user.isAdmin ? (
         <>
-          <Route exact path="/admin" component={AdminHome} />
+          <Route exact path="/user/admin" component={AdminHome} />
         </>
       ) : (
         ""
@@ -59,7 +59,7 @@ class App extends React.Component {
       })
         .then((res) => res.json())
         .then((res) => {
-          console.log(res.user.token);
+          // console.log(res.user.token);
           this.props.dispatch({ type: "LOGIN", payload: res.user });
           // console.log(this.props.user, res, "---------------");
           this.props.history.push("/");

@@ -101,18 +101,55 @@ class Header extends React.Component {
                   </>
                 ) : (
                   <>
-                    {this.props.user.isAdmin ? (
-                      <li>
-                        <Link
-                          to="/admin"
-                          className="nav-link ml-3 text-light font-weight-bold"
-                        >
-                          Admin
-                        </Link>
-                      </li>
-                    ) : (
-                      ""
-                    )}
+                    <li className="nav-item dropdown  ml-3">
+                      <a
+                        className="nav-link dropdown-toggle text-light font-weight-bold"
+                        href="#"
+                        id="navbarDropdown"
+                        role="button"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        User
+                      </a>
+
+                      <div
+                        className="dropdown-menu  font-weight-bold"
+                        aria-labelledby="navbarDropdown"
+                      >
+                        {this.props.user.isAdmin ? (
+                          <Link
+                            to="/user/admin"
+                            className="dropdown-item  font-weight-bold"
+                          >
+                            Admin
+                          </Link>
+                        ) : (
+                          ""
+                        )}
+                        <a className="dropdown-item font-weight-bold" href="#">
+                          Profile
+                        </a>
+                        <a className="dropdown-item font-weight-bold" href="#">
+                          Favroite
+                        </a>
+
+                        <a className="dropdown-item font-weight-bold " href="#">
+                          Order
+                        </a>
+                        <a className="dropdown-item font-weight-bold " href="#">
+                          Wallet
+                        </a>
+                        <a className="dropdown-item font-weight-bold " href="#">
+                          Coupons
+                        </a>
+                        <a className="dropdown-item font-weight-bold " href="#">
+                          Setting
+                        </a>
+                      </div>
+                    </li>
+
                     <li>
                       <Link
                         to="/"

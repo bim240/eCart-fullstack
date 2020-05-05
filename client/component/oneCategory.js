@@ -1,12 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { v4 as uuid } from "uuid";
 
 import { getAllProduct } from "../store/actions/allProductAction";
 
 const OneCategory = (props) => {
   if (!props.allProduct) {
-    console.log("inside fetch");
+    // console.log("inside fetch");
     props.dispatch(getAllProduct());
   }
   let products = findProductByCategory(props.match.params.category, props);
@@ -15,10 +16,10 @@ const OneCategory = (props) => {
     <>
       {products ? (
         <div className="container mt-5">
-          <div class="row row-cols-1  row-cols-sm-1  row-cols-md-4 row-cols-lg-4">
+          <div class="row row-cols-1  row-cols-sm-2  row-cols-md-4 row-cols-lg-4">
             {products.map((product) => {
               return (
-                <div class="col mb-4">
+                <div class="col mb-4" key={uuid()}>
                   <div class="card h-100">
                     <img
                       src={product.image}
@@ -26,19 +27,19 @@ const OneCategory = (props) => {
                       alt="product image"
                     />
                     <div class="card-body">
-                      <p>
+                      <div>
                         <Link to={`/product/${product._id}`}>
                           <span className="text-dark font-weight-bold">
                             {product.name}
                           </span>
                         </Link>
                         <small className="font-weight-bold">
-                          <div>Sub Category: {product.subCategory}</div>
+                          <div>Sub Category: {product.subCatogery}</div>
                           <div>Brand: {product.brand}</div>
                           price : <i class="fas fa-rupee-sign"></i>{" "}
                           {product.price}
                         </small>{" "}
-                      </p>
+                      </div>
                     </div>
                     <button className="btn btn-primary font-weight-bold">
                       Add To Cart
@@ -57,7 +58,7 @@ const OneCategory = (props) => {
 };
 
 function findProductByCategory(category, props) {
-  console.log(category, props, "inside filter");
+  // console.log(category, props, "inside filter");
   // await props.dispatch(getAllProduct());
   if (props.allProduct) {
     return props.allProduct.filter(
