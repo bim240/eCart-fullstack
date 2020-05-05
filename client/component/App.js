@@ -11,6 +11,7 @@ import SingleProductDetails from "./singleProductDetails";
 import "../scss/main.scss";
 import oneCategory from "./oneCategory";
 import { getUserInfo } from "../store/actions/userAction";
+import UserProfile from "./user/userProfile";
 
 function Auth(authProps) {
   return (
@@ -18,6 +19,7 @@ function Auth(authProps) {
       <Route exact path="/" component={Home} />
       <Route exact path="/product/:id" component={SingleProductDetails} />
       <Route exact path="/:category" component={oneCategory} />
+      <Route exact path="/user/profile" component={UserProfile} />
       {authProps.user.isAdmin ? (
         <>
           <Route exact path="/user/admin" component={AdminHome} />

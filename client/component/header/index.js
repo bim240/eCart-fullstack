@@ -132,9 +132,13 @@ class Header extends React.Component {
                         ) : (
                           ""
                         )}
-                        <a className="dropdown-item font-weight-bold" href="#">
+                        <Link
+                          to="/user/profile"
+                          className="dropdown-item font-weight-bold"
+                          href="#"
+                        >
                           <FaUser className="mr-1" /> Profile
-                        </a>
+                        </Link>
                         <a className="dropdown-item font-weight-bold" href="#">
                           <MdFavorite className="mr-1" /> Favroite
                         </a>

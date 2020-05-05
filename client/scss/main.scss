@@ -1,8 +1,12 @@
 @import "./singleproductDetails.scss";
+@import "./userProfile.scss";
 
 $enable-responsive-font-sizes: true;
 
 .oneSection_title_show {
   display: flex;
   justify-content: space-between;
+}
+.letter_spacing {
+  letter-spacing: 1.2px;
 }
