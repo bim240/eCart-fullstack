@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import "./style.css";
+import { handleUserSignup } from "../../store/actions/userAction";
 
 class Signup extends React.Component {
   constructor(props) {
@@ -15,28 +16,12 @@ class Signup extends React.Component {
   handleInput = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
-  handleUserSignup = (e) => {
+
+  handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:3000/api/v1/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "Application/json",
-      },
-      body: JSON.stringify({
-        user: {
-          username: this.state.username,
-          email: this.state.email,
-          password: this.state.password,
-        },
-      }),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        this.props.history.push("/login");
-        console.log(this.props.user);
-      })
-      .catch((err) => console.log(err));
+    this.props.dispatch(handleUserSignup(this.state, this.props));
   };
+
   render() {
     return (
       <section className="bg_signup">
@@ -90,7 +75,7 @@ class Signup extends React.Component {
                     </div>
 
                     <button
-                      onClick={(e) => this.handleUserSignup(e)}
+                      onClick={(e) => this.handleSubmit(e)}
                       className="btn btn-lg btn-primary btn-block text-uppercase my-4"
                       type="primary"
                     >

@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { v4 as uuid } from "uuid";
 
 import Additems from "./additems";
 import {
@@ -36,7 +37,7 @@ class AdminHome extends React.Component {
     return (
       <>
         {this.props.allUsersInfo ? (
-          <div className="container-fluid mt-3  text-dark font-weight-bold">
+          <div className="container mt-3  text-dark font-weight-bold">
             <nav>
               <div className="nav nav-tabs" id="nav-tab" role="tablist">
                 <a
@@ -91,7 +92,7 @@ class AdminHome extends React.Component {
                     {this.props.allUsersInfo
                       ? this.props.allUsersInfo.map((user) => {
                           return (
-                            <div className="col mb-4">
+                            <div className="col mb-4" key={uuid()}>
                               <div
                                 className={`card ${
                                   user.isBlocked
@@ -148,11 +149,11 @@ class AdminHome extends React.Component {
                 aria-labelledby="nav-profile-tab"
               >
                 <div className="container-fluid my-3">
-                  <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+                  <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3">
                     {this.props.allProductInfo
                       ? this.props.allProductInfo.map((product) => {
                           return (
-                            <div className="col m-4">
+                            <div className="col " key={uuid()}>
                               <div className="card" style={{ width: "18rem" }}>
                                 <img
                                   src={

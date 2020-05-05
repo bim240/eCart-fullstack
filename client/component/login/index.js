@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import "./style.css";
 import { Link } from "react-router-dom";
+import { handleUserLogin } from "../../store/actions/userAction";
 
 class Login extends React.Component {
   constructor(props) {
@@ -11,57 +12,16 @@ class Login extends React.Component {
       password: "",
     };
   }
-  handleInput = (field, value) => {
-    if (field === "email") {
-      this.setState({ email: value });
-    } else if (field === "password") {
-      this.setState({ password: value });
-    }
+  handleInput = (e) => {
+    console.log(e.target.name);
+    this.setState({ [e.target.name]: e.target.value });
   };
   handleGitHubLogin = (e) => {
     e.preventDefault();
-    fetch("http://localhost:3000/api/v1/users/auth/github", {
-      method: "GET",
-      headers: {
-        "Content-Type": "Application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        localStorage.setItem("login-token", res.user.token);
-        this.props.dispatch({ type: "LOGIN", payload: res.user });
-
-        this.props.history.push("/");
-      })
-      .catch((err) => console.log(err));
   };
   userLogin = (e) => {
     e.preventDefault();
-    fetch("http://localhost:3000/api/v1/users/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "Application/json",
-      },
-      body: JSON.stringify({
-        user: {
-          email: this.state.email,
-          password: this.state.password,
-        },
-      }),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.user) {
-          localStorage.setItem("login-token", res.user.token);
-          this.props.dispatch({ type: "LOGIN", payload: res.user });
-
-          this.props.history.push("/");
-        } else {
-          console.log("wrong request");
-          his.props.history.push("/");
-        }
-      })
-      .catch((err) => console.log(err));
+    this.props.dispatch(handleUserLogin(this.state, this.props));
   };
   render() {
     return (
@@ -75,9 +35,8 @@ class Login extends React.Component {
                   <form className="form-signin">
                     <div className="form-label-group">
                       <input
-                        onChange={(e) =>
-                          this.handleInput("email", e.target.value)
-                        }
+                        onChange={(e) => this.handleInput(e)}
+                        name="email"
                         type="email"
                         id="inputEmail"
                         className="form-control"
@@ -91,9 +50,8 @@ class Login extends React.Component {
 
                     <div className="form-label-group">
                       <input
-                        onChange={(e) =>
-                          this.handleInput("password", e.target.value)
-                        }
+                        onChange={(e) => this.handleInput(e)}
+                        name="password"
                         type="password"
                         id="inputPassword"
                         className="form-control "

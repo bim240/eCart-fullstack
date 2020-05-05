@@ -1,6 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { RiAdminLine, RiCoupon3Line } from "react-icons/ri";
+import { FaUser, FaWallet } from "react-icons/fa";
+import { MdFavorite } from "react-icons/md";
+import { AiOutlineUnorderedList, AiFillSetting } from "react-icons/ai";
 
 import "./style.css";
 
@@ -123,29 +127,29 @@ class Header extends React.Component {
                             to="/user/admin"
                             className="dropdown-item  font-weight-bold"
                           >
-                            Admin
+                            <RiAdminLine className="mr-1" /> Admin
                           </Link>
                         ) : (
                           ""
                         )}
                         <a className="dropdown-item font-weight-bold" href="#">
-                          Profile
+                          <FaUser className="mr-1" /> Profile
                         </a>
                         <a className="dropdown-item font-weight-bold" href="#">
-                          Favroite
+                          <MdFavorite className="mr-1" /> Favroite
                         </a>
 
                         <a className="dropdown-item font-weight-bold " href="#">
-                          Order
+                          <AiOutlineUnorderedList className="mr-1" /> Order
                         </a>
                         <a className="dropdown-item font-weight-bold " href="#">
-                          Wallet
+                          <FaWallet className="mr-1" /> Wallet
                         </a>
                         <a className="dropdown-item font-weight-bold " href="#">
-                          Coupons
+                          <RiCoupon3Line className="mr-1" /> Coupons
                         </a>
                         <a className="dropdown-item font-weight-bold " href="#">
-                          Setting
+                          <AiFillSetting className="mr-1" /> Setting
                         </a>
                       </div>
                     </li>

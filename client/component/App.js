@@ -10,6 +10,7 @@ import AdminHome from "./admin/adminHome";
 import SingleProductDetails from "./singleProductDetails";
 import "../scss/main.scss";
 import oneCategory from "./oneCategory";
+import { getUserInfo } from "../store/actions/userAction";
 
 function Auth(authProps) {
   return (
@@ -50,21 +51,7 @@ class App extends React.Component {
   componentDidMount() {
     // console.log(localStorage["login-token"], "toekn view");
     if (localStorage["login-token"]) {
-      fetch("http://localhost:3000/api/v1/user", {
-        method: "GET",
-        headers: {
-          "Content-Type": "Application/json",
-          authorization: `${localStorage["login-token"]}`,
-        },
-      })
-        .then((res) => res.json())
-        .then((res) => {
-          // console.log(res.user.token);
-          this.props.dispatch({ type: "LOGIN", payload: res.user });
-          // console.log(this.props.user, res, "---------------");
-          this.props.history.push("/");
-        })
-        .catch((err) => console.log(err));
+      this.props.dispatch(getUserInfo(this.props));
     }
   }
   render() {
