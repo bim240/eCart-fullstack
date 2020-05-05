@@ -1,10 +1,10 @@
 export default function ErrorReducer(state = "", action) {
   switch (action.type) {
     case "REMOVE_ERROR":
-      return {...state, state =""}
+      return null;
     case "ADD_ERROR":
-      return {...state, state:action.error}
+      return action.error;
     default:
-      state;
+      return state;
   }
 }

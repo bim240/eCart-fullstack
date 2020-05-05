@@ -15,13 +15,21 @@ export function handleUserSignup(state, props) {
     })
       .then((res) => res.json())
       .then((res) => {
-        props.history.push("/login");
-        console.log(res);
+        if (res.user) {
+          props.history.push("/login");
+          // console.log(res);
+        } else {
+          dispatch({ type: "ADD_ERROR", error: res.err.body });
+          // console.log(res.err.body);
+        }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        dispatch({ type: "ADD_ERROR", error: res.err.body });
+      });
   };
 }
-
+// login
 export function handleUserLogin(state, props) {
   return function (dispatch) {
     fetch("http://localhost:3000/api/v1/users/login", {
@@ -44,11 +52,14 @@ export function handleUserLogin(state, props) {
 
           props.history.push("/");
         } else {
+          dispatch({ type: "ADD_ERROR", error: res.err });
           console.log("wrong request");
-          props.history.push("/");
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        // console.log(err);
+        dispatch({ type: "ADD_ERROR", error: res.err });
+      });
   };
 }
 
@@ -68,6 +79,9 @@ export function getUserInfo(props) {
         // console.log(this.props.user, res, "---------------");
         props.history.push("/");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        // console.log(err);
+        dispatch({ type: "ADD_ERROR", error: res.err });
+      });
   };
 }

@@ -27,6 +27,7 @@ class Login extends React.Component {
     return (
       <section className="bg_login">
         <div className="container">
+          {this.props.error ? alert(this.props.error) : ""}
           <div className="row">
             <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
               <div className="card card-signin my-5">
@@ -109,6 +110,7 @@ class Login extends React.Component {
 function mapStateToProps(state) {
   return {
     user: state.User.UserInfo,
+    error: state.Error,
   };
 }
 

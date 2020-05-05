@@ -26,6 +26,7 @@ class Signup extends React.Component {
     return (
       <section className="bg_signup">
         <div className="container">
+          {this.props.error ? alert(this.props.error) : ""}
           <div className="row">
             <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
               <div className="card card-signin my-5">
@@ -77,7 +78,7 @@ class Signup extends React.Component {
                     <button
                       onClick={(e) => this.handleSubmit(e)}
                       className="btn btn-lg btn-primary btn-block text-uppercase my-4"
-                      type="primary"
+                      type="submit"
                     >
                       Signup
                     </button>
@@ -96,4 +97,10 @@ class Signup extends React.Component {
   }
 }
 
-export default connect()(Signup);
+function mapStateToProps(state) {
+  return {
+    error: state.Error,
+  };
+}
+
+export default connect(mapStateToProps)(Signup);
