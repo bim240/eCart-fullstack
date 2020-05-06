@@ -1,3 +1,4 @@
+// user register
 export function handleUserSignup(state, props) {
   return function (dispatch) {
     fetch("http://localhost:3000/api/v1/users", {
@@ -52,17 +53,17 @@ export function handleUserLogin(state, props) {
 
           props.history.push("/");
         } else {
-          dispatch({ type: "ADD_ERROR", error: res.err });
-          // console.log("wrong request");
+          dispatch({ type: "ADD_ERROR", error: res.msg });
+          console.log(res);
         }
       })
       .catch((err) => {
-        // console.log(err);
-        dispatch({ type: "ADD_ERROR", error: res.err });
+        console.log(err);
+        dispatch({ type: "ADD_ERROR", error: err.err.body });
       });
   };
 }
-
+// fetch user info
 export function getUserInfo(props) {
   return function (dispatch) {
     fetch("http://localhost:3000/api/v1/user", {
@@ -75,13 +76,53 @@ export function getUserInfo(props) {
       .then((res) => res.json())
       .then((res) => {
         // console.log(res.user.token);
-        dispatch({ type: "LOGIN", payload: res.user });
-        // console.log(this.props.user, res, "---------------");
-        props.history.push("/");
+        if (res.user) {
+          dispatch({ type: "LOGIN", payload: res.user });
+          // console.log(this.props.user, res, "---------------");
+          props.history.push("/");
+        } else {
+          dispatch({ type: "ADD_ERROR", error: err.msg });
+          props.history.push("/");
+        }
       })
       .catch((err) => {
         // console.log(err);
-        dispatch({ type: "ADD_ERROR", error: err.error });
+        dispatch({ type: "ADD_ERROR", error: err.body });
+      });
+  };
+}
+
+// update user info
+export function updateUserInfo(props, user) {
+  console.log("inside action");
+  return function (dispatch) {
+    fetch("http://localhost:3000/api/v1/user", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "Application/json",
+        authorization: `${localStorage["login-token"]}`,
+      },
+      body: JSON.stringify({
+        user,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        // console.log(res.user.token);
+        if (res.user) {
+          localStorage.setItem("login-token", res.user.token);
+          dispatch({ type: "UPDATE", payload: res.user });
+          console.log(res.user, "---------------");
+          props.history.push("/user/profile");
+        } else {
+          console.log(res, "---------------");
+          dispatch({ type: "ADD_ERROR", error: err.msg });
+          props.history.push("/user/profile");
+        }
+      })
+      .catch((err) => {
+        // console.log(err);
+        dispatch({ type: "ADD_ERROR", error: err.body });
       });
   };
 }

@@ -6,7 +6,7 @@ export default function adminUser(state = initialState, action) {
   switch (action.type) {
     case "ALL_USER":
       return { ...state, allUser: action.payload };
-    case "UPDATE":
+    case "UPDATE_BLOCK":
       return {
         ...state,
         allUser: state.allUser.map((user) => {

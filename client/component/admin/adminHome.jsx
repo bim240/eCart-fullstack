@@ -28,7 +28,7 @@ class AdminHome extends React.Component {
   handleBlock = (user) => {
     this.props.dispatch(blockUnblockUser(user));
   };
-  // delte a user
+  // delte a product
   handleDeleteItem = (product) => {
     // console.log(product._id);
     this.props.dispatch(deleteProduct(product));

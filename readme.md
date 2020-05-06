@@ -904,6 +904,7 @@ Authorization = token;
         "username": "Jacob008",
         "email": "jake@jake007.jake",
         "image": "image url",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZWE5YWIyNTA3MGJiMjc1ZjE3N2FkODIiLCJlbWFpbCI6Impha2VAamFrZTAwOC5qYWtlIiwiaWF0IjoxNTg4NzUzMTE0fQ.sUptK-0omGbbxlknwIvyou4Ee4DIMJWDO5TxhCzRwrg",
         "coupons": [],
         "address": [],
         "order": [],

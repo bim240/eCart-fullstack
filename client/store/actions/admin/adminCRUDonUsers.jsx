@@ -32,7 +32,7 @@ export function blockUnblockUser(user) {
       })
         .then((res) => res.json())
         .then((res) => {
-          dispatch({ type: "UPDATE", payload: res.updatedUser });
+          dispatch({ type: "UPDATE_BLOCK", payload: res.updatedUser });
         });
     } else {
       fetch("http://localhost:3000/api/v1/admin/allUsers/block", {
@@ -49,7 +49,7 @@ export function blockUnblockUser(user) {
       })
         .then((res) => res.json())
         .then((res) => {
-          dispatch({ type: "UPDATE", payload: res.updatedUser });
+          dispatch({ type: "UPDATE_BLOCK", payload: res.updatedUser });
         });
     }
     console.log(user.id);
