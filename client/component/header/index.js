@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { RiAdminLine, RiCoupon3Line } from "react-icons/ri";
-import { FaUser, FaWallet } from "react-icons/fa";
+import { FaUser, FaWallet, FaAddressBook } from "react-icons/fa";
 import { MdFavorite } from "react-icons/md";
 import { AiOutlineUnorderedList, AiFillSetting } from "react-icons/ai";
 
@@ -141,6 +141,9 @@ class Header extends React.Component {
                         </Link>
                         <a className="dropdown-item font-weight-bold" href="#">
                           <MdFavorite className="mr-1" /> Favroite
+                        </a>
+                        <a className="dropdown-item font-weight-bold" href="#">
+                          <FaAddressBook className="mr-1" /> Address
                         </a>
 
                         <a className="dropdown-item font-weight-bold " href="#">

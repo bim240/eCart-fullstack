@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import "./style.css";
 import { Link } from "react-router-dom";
-import { handleUserLogin } from "../../store/actions/userAction";
+import { handleUserLogin } from "../../store/actions/user/userAction";
 
 class Login extends React.Component {
   constructor(props) {

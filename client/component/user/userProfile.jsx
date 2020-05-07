@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { RiAdminLine, RiCoupon3Line } from "react-icons/ri";
-import { FaUser, FaWallet } from "react-icons/fa";
+import { FaUser, FaWallet, FaAddressBook } from "react-icons/fa";
 import { MdFavorite } from "react-icons/md";
 import {
   AiOutlineUnorderedList,
@@ -10,7 +10,8 @@ import {
   AiOutlineLogout,
   AiFillDelete,
 } from "react-icons/ai";
-import { updateUserInfo } from "../../store/actions/userAction";
+import { updateUserInfo } from "../../store/actions/user/userAction";
+import Address from "./address";
 
 class UserProfile extends React.Component {
   constructor(props) {
@@ -83,7 +84,12 @@ class UserProfile extends React.Component {
               >
                 <MdFavorite /> Favorite
               </a>
-
+              <a
+                className="dropdown-item font-weight-bold border-bottom letter_spacing mb-1"
+                href="#"
+              >
+                <FaAddressBook /> Address
+              </a>
               <a
                 className="dropdown-item font-weight-bold border-bottom letter_spacing mb-1 "
                 href="#"
@@ -213,6 +219,10 @@ class UserProfile extends React.Component {
               <div className="container border rounded mx-1 my-3 p2">
                 <h4 className="font-weight-bold"> Order</h4>
               </div>
+              {/* address */}
+
+              <Address />
+
               {/* wallet */}
               <div className="container border rounded mx-1 my-3 p2">
                 <h4 className="font-weight-bold"> Wallet</h4>

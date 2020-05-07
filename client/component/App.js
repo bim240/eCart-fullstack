@@ -10,7 +10,7 @@ import AdminHome from "./admin/adminHome";
 import SingleProductDetails from "./singleProductDetails";
 import "../scss/main.scss";
 import oneCategory from "./oneCategory";
-import { getUserInfo } from "../store/actions/userAction";
+import { getUserInfo } from "../store/actions/user/userAction";
 import UserProfile from "./user/userProfile";
 
 function Auth(authProps) {

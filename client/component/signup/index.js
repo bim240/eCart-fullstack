@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import "./style.css";
-import { handleUserSignup } from "../../store/actions/userAction";
+import { handleUserSignup } from "../../store/actions/user/userAction";
 
 class Signup extends React.Component {
   constructor(props) {

@@ -14,6 +14,7 @@ module.exports = {
   // add address
   addAddress: async (req, res, next) => {
     try {
+      // console.log(req.body.address);
       req.body.address.resident = req.user.userId;
       var newAddresss = await Address.create(req.body.address, { new: true });
       await User.findByIdAndUpdate(req.user.userId, {
@@ -45,7 +46,7 @@ module.exports = {
       await User.findByIdAndUpdate(req.user.userId, {
         $pull: { address: newAddresss.id },
       });
-      res.status(200).json({ msg: "Address deleted" });
+      res.status(200).json({ address: newAddresss });
     } catch (error) {
       next(error);
     }

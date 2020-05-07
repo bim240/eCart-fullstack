@@ -86,8 +86,8 @@ export function getUserInfo(props) {
         }
       })
       .catch((err) => {
-        // console.log(err);
-        dispatch({ type: "ADD_ERROR", error: err.body });
+        console.log(err);
+        // dispatch({ type: "ADD_ERROR", error: err.body });
       });
   };
 }

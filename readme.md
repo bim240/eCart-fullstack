@@ -1371,7 +1371,7 @@ Authorization = token;
 
 Authentication as a user is required
 
-`POST /api/v1/user/address`
+`GET /api/v1/user/address`
 
 Body
 
@@ -1507,7 +1507,7 @@ Body
 ```js
 {
   "address":{
-  	"id":"5ea2af8b8e2065378de36cf4"
+  	"id":"5ea2b0df8e2065378de36cf6"
   }
 }
 ```
@@ -1522,7 +1522,24 @@ Authorization = token;
 
 ```js
 {
-    "msg": "Address deleted"
+    "address": {
+        "address": {
+            "name": "String234",
+            "sonOf": "String234",
+            "mobNumber": 5524234554454,
+            "address1": "String23234",
+            "address2": "String23234",
+            "area": "String32324",
+            "district": "String23234",
+            "state": "String23234",
+            "pinCode": 5245452323224
+        },
+        "_id": "5ea2b0df8e2065378de36cf6",
+        "resident": "5ea2a66978cd3a3191a8dd11",
+        "createdAt": "2020-04-24T09:26:55.878Z",
+        "updatedAt": "2020-04-24T09:26:55.878Z",
+        "__v": 0
+    }
 }
 ```
 
