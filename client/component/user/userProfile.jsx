@@ -51,6 +51,11 @@ class UserProfile extends React.Component {
     this.props.dispatch(updateUserInfo(this.props, user));
     // console.log(this.state, "user info in profile");
   };
+  handleLogout = () => {
+    localStorage.clear();
+    this.props.history.push("/");
+    this.props.dispatch({ type: "LOGOUT", payload: "" });
+  };
   render() {
     return (
       <>
@@ -114,16 +119,17 @@ class UserProfile extends React.Component {
               >
                 <AiFillSetting /> Setting
               </a>
-              <a
+              <Link
                 className="dropdown-item font-weight-bold border-bottom letter_spacing mb-3 "
-                href="#"
+                to="/"
+                onClick={() => this.handleLogout()}
               >
                 <AiOutlineLogout /> Logout
-              </a>
+              </Link>
             </div>
             <div class="col-sm-8 border rounded my-3 mx-1 ">
               {/* personal information */}
-              <div className="container my-2 mx-1 p-2 border rounded">
+              <div className="container my-2 mx-1 p-2 ">
                 <div className="oneSection_title_show">
                   <h4 className="font-weight-bold">Personal Information</h4>
                   <Link onClick={() => (this.state.editKey = true)}>
@@ -211,29 +217,39 @@ class UserProfile extends React.Component {
                   </form>
                 )}
               </div>
+              <br />
+              <hr />
               {/* fav */}
-              <div className="container border rounded mx-1 my-3 p2">
+              <div className="container  mx-1 my-3 p2">
                 <h4 className="font-weight-bold"> Favorite</h4>
               </div>
+              <br />
+              <hr />
               {/* Order */}
-              <div className="container border rounded mx-1 my-3 p2">
+              <div className="container  mx-1 my-3 p2">
                 <h4 className="font-weight-bold"> Order</h4>
               </div>
+              <br />
+              <hr />
               {/* address */}
 
               <Address />
-
+              <br />
+              <hr />
               {/* wallet */}
-              <div className="container border rounded mx-1 my-3 p2">
+              <div className="container  mx-1 my-3 p2">
                 <h4 className="font-weight-bold"> Wallet</h4>
               </div>
-
+              <br />
+              <hr />
               {/* coupon */}
-              <div className="container border rounded mx-1 my-3 p2">
+              <div className="container  mx-1 my-3 p2">
                 <h4 className="font-weight-bold"> Coupons</h4>
               </div>
+              <br />
+              <hr />
               {/* setting */}
-              <div className="container border rounded mx-1 my-3 p2">
+              <div className="container  mx-1 my-3 p2">
                 <h4 className="font-weight-bold"> Setting</h4>
               </div>
             </div>

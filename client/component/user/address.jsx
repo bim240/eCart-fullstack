@@ -41,6 +41,7 @@ class Address extends React.Component {
   componentDidMount() {
     this.props.dispatch(getAllAddress());
   }
+
   render() {
     return (
       <>
@@ -211,8 +212,6 @@ class Address extends React.Component {
               Add another address
             </button>
           )}
-          <br />
-          <hr />
         </div>
       </>
     );
