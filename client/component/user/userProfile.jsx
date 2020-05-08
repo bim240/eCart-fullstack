@@ -10,8 +10,10 @@ import {
   AiOutlineLogout,
   AiFillDelete,
 } from "react-icons/ai";
+
 import { updateUserInfo } from "../../store/actions/user/userAction";
 import Address from "./address";
+import Wallet from "./wallet";
 
 class UserProfile extends React.Component {
   constructor(props) {
@@ -239,6 +241,7 @@ class UserProfile extends React.Component {
               {/* wallet */}
               <div className="container  mx-1 my-3 p2">
                 <h4 className="font-weight-bold"> Wallet</h4>
+                <Wallet />
               </div>
               <br />
               <hr />

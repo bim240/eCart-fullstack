@@ -149,14 +149,14 @@ class Address extends React.Component {
               <button
                 onClick={(e) => this.handleSubmit(e)}
                 type="primary"
-                className="btn btn-primary"
+                className="btn btn-primary btn-sm"
               >
                 Submit
               </button>
               <button
                 onClick={(e) => this.setState({ changeKey: false })}
                 type="primary"
-                className="btn btn-danger m-2"
+                className="btn btn-danger m-2 btn-sm"
               >
                 Close
               </button>
@@ -206,7 +206,7 @@ class Address extends React.Component {
               onClick={() => {
                 this.setState({ changeKey: true });
               }}
-              className="btn btn-primary m-2"
+              className="btn btn-primary m-2 btn-sm"
             >
               {" "}
               Add another address

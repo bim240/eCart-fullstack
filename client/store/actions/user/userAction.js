@@ -94,7 +94,7 @@ export function getUserInfo(props) {
 
 // update user info
 export function updateUserInfo(props, user) {
-  console.log("inside action");
+  // console.log("inside action");
   return function (dispatch) {
     fetch("http://localhost:3000/api/v1/user", {
       method: "PUT",
@@ -112,10 +112,10 @@ export function updateUserInfo(props, user) {
         if (res.user) {
           localStorage.setItem("login-token", res.user.token);
           dispatch({ type: "UPDATE", payload: res.user });
-          console.log(res.user, "---------------");
+          // console.log(res.user, "---------------");
           props.history.push("/user/profile");
         } else {
-          console.log(res, "---------------");
+          // console.log(res, "---------------");
           dispatch({ type: "ADD_ERROR", error: err.msg });
           props.history.push("/user/profile");
         }
