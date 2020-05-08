@@ -1848,7 +1848,24 @@ Authorization = token;
 
 ```js
 {
-  msg: "Account deleted";
+    "user": {
+        "coupon": [],
+        "fav": [],
+        "address": [],
+        "reviews": [],
+        "order": [],
+        "_id": "5ea9ab25070bb275f177ad82",
+        "username": "hello3",
+        "email": "jake@jake008.jake",
+        "password": "$2a$10$ECObN.1oY067UkAiO2mhpeFShth15hMHP9hXfNKknJ84W0WqKHsiK",
+        "isAdmin": false,
+        "isBlocked": false,
+        "createdAt": "2020-04-29T16:28:21.994Z",
+        "updatedAt": "2020-05-06T08:23:30.852Z",
+        "__v": 0,
+        "cart": "5ea9ab26070bb275f177ad83",
+        "image": "image url3"
+    }
 }
 ```
 

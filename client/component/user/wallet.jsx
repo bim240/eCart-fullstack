@@ -26,7 +26,11 @@ class Wallet extends Component {
       <>
         {" "}
         {this.props.userInfo.wallet ? (
-          <> your balance is {this.props.userInfo.wallet}</>
+          <>
+            {" "}
+            your balance is <i class="fas fa-rupee-sign"> </i>{" "}
+            {this.props.userInfo.wallet}
+          </>
         ) : (
           <>no balence</>
         )}

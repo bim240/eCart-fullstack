@@ -19,6 +19,11 @@ export default function UserReducer(state = initialstate, action) {
         ...state,
         UserInfo: action.payload,
       };
+    case "DELETE_USER":
+      return {
+        ...state,
+        UserInfo: action.payload,
+      };
     default:
       return state;
   }

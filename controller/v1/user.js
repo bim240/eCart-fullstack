@@ -91,7 +91,7 @@ module.exports = {
       for (let comment in allComments) {
         await Comment.findByIdAndDelete(comment.id);
       }
-      res.status(200).json({ msg: "Account deleted" });
+      res.status(200).json({ user: result });
     } catch (error) {
       next(error);
     }

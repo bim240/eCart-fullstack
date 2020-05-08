@@ -14,6 +14,9 @@ import {
 import { updateUserInfo } from "../../store/actions/user/userAction";
 import Address from "./address";
 import Wallet from "./wallet";
+import Order from "./order";
+import Setting from "./setting";
+import Favorite from "./favorite";
 
 class UserProfile extends React.Component {
   constructor(props) {
@@ -224,12 +227,14 @@ class UserProfile extends React.Component {
               {/* fav */}
               <div className="container  mx-1 my-3 p2">
                 <h4 className="font-weight-bold"> Favorite</h4>
+                <Favorite />
               </div>
               <br />
               <hr />
               {/* Order */}
               <div className="container  mx-1 my-3 p2">
                 <h4 className="font-weight-bold"> Order</h4>
+                <Order />
               </div>
               <br />
               <hr />
@@ -254,6 +259,7 @@ class UserProfile extends React.Component {
               {/* setting */}
               <div className="container  mx-1 my-3 p2">
                 <h4 className="font-weight-bold"> Setting</h4>
+                <Setting history={this.props.history} />
               </div>
             </div>
           </div>

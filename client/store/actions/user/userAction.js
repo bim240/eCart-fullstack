@@ -126,3 +126,33 @@ export function updateUserInfo(props, user) {
       });
   };
 }
+// delete account
+export function deleteUser(props) {
+  return function (dispatch) {
+    fetch("http://localhost:3000/api/v1/user", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "Application/json",
+        authorization: `${localStorage["login-token"]}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        // console.log(res.user.token);
+        if (res.user) {
+          localStorage.clear();
+          dispatch({ type: "DELETE_USER", payload: "" });
+          // console.log(res.user, "---------------");
+          props.history.push("/");
+        } else {
+          // console.log(res, "---------------");
+          dispatch({ type: "ADD_ERROR", error: err.msg });
+          props.history.push("/");
+        }
+      })
+      .catch((err) => {
+        // console.log(err);
+        dispatch({ type: "ADD_ERROR", error: err.body });
+      });
+  };
+}
