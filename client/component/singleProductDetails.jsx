@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { getAllProduct } from "../store/actions/allProductAction";
 import { AddItemToCart } from "../store/actions/user/cartActions";
 
@@ -8,6 +9,9 @@ const SingleProductDetails = (props) => {
     // console.log("inside fetch");
     props.dispatch(getAllProduct());
   }
+  const handleBuyItem = (id) => {
+    props.dispatch(AddItemToCart(id));
+  };
   const handleAddItem = (id) => {
     props.dispatch(AddItemToCart(id));
     alert("Added to cart");
@@ -144,13 +148,14 @@ const SingleProductDetails = (props) => {
                     </div>
                   </div>
                   <hr />
-                  <a
-                    href="#"
+                  <Link
+                    onClick={() => handleBuyItem(product._id)}
+                    to="/user/order/address"
                     className="btn btn-lg btn-primary text-uppercase m-3"
                   >
                     {" "}
                     Buy now{" "}
-                  </a>
+                  </Link>
                   <a
                     onClick={() => handleAddItem(product._id)}
                     className="btn btn-lg btn-outline-primary text-uppercase"
