@@ -172,14 +172,16 @@ class Cart extends Component {
           </div>
         ) : (
           <>
-            <div class="row">
-              <div class="col-sm-12 col-md-6 text-right">
-                <button class="btn btn-lg btn-block ">Cart empty</button>
-              </div>
-              <div class="col-sm-12  col-md-6">
-                <Link to="/" class="btn btn-block btn-light">
-                  Continue Shopping
-                </Link>
+            <div class="col mb-2">
+              <div class="row">
+                <div class="col-sm-12 col-md-6 text-right">
+                  <button class="btn btn-lg btn-block ">Cart empty</button>
+                </div>
+                <div class="col-sm-12  col-md-6">
+                  <Link to="/" class="btn btn-block btn-light">
+                    Continue Shopping
+                  </Link>
+                </div>
               </div>
             </div>
           </>
