@@ -145,12 +145,14 @@ export function deleteUser(props) {
           // console.log(res.user, "---------------");
           props.history.push("/");
         } else {
+          localStorage.clear();
           // console.log(res, "---------------");
           dispatch({ type: "ADD_ERROR", error: err.msg });
           props.history.push("/");
         }
       })
       .catch((err) => {
+        localStorage.clear();
         // console.log(err);
         dispatch({ type: "ADD_ERROR", error: err.body });
       });

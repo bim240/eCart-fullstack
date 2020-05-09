@@ -139,25 +139,43 @@ class Header extends React.Component {
                         >
                           <FaUser className="mr-1" /> Profile
                         </Link>
-                        <a className="dropdown-item font-weight-bold" href="#">
+                        <Link
+                          to="/user/profile"
+                          className="dropdown-item font-weight-bold"
+                        >
                           <MdFavorite className="mr-1" /> Favroite
-                        </a>
-                        <a className="dropdown-item font-weight-bold" href="#">
+                        </Link>
+                        <Link
+                          to="/user/profile"
+                          className="dropdown-item font-weight-bold"
+                        >
                           <FaAddressBook className="mr-1" /> Address
-                        </a>
+                        </Link>
 
-                        <a className="dropdown-item font-weight-bold " href="#">
+                        <Link
+                          to="/user/profile"
+                          className="dropdown-item font-weight-bold"
+                        >
                           <AiOutlineUnorderedList className="mr-1" /> Order
-                        </a>
-                        <a className="dropdown-item font-weight-bold " href="#">
+                        </Link>
+                        <Link
+                          to="/user/profile"
+                          className="dropdown-item font-weight-bold"
+                        >
                           <FaWallet className="mr-1" /> Wallet
-                        </a>
-                        <a className="dropdown-item font-weight-bold " href="#">
+                        </Link>
+                        <Link
+                          to="/user/profile"
+                          className="dropdown-item font-weight-bold"
+                        >
                           <RiCoupon3Line className="mr-1" /> Coupons
-                        </a>
-                        <a className="dropdown-item font-weight-bold " href="#">
+                        </Link>
+                        <Link
+                          to="/user/profile"
+                          className="dropdown-item font-weight-bold"
+                        >
                           <AiFillSetting className="mr-1" /> Setting
-                        </a>
+                        </Link>
                       </div>
                     </li>
 
@@ -174,7 +192,7 @@ class Header extends React.Component {
                 )}
                 <li>
                   <Link
-                    to="cart"
+                    to="/user/cart"
                     className="nav-link ml-3  text-light font-weight-bold"
                   >
                     <svg

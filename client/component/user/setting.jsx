@@ -11,6 +11,7 @@ class Setting extends Component {
   handleDeleteUser = () => {
     this.props.history.push("/");
     this.props.dispatch(deleteUser(this.props));
+    // localStorage.clear();
   };
   render() {
     return (

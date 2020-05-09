@@ -12,6 +12,9 @@ import "../scss/main.scss";
 import oneCategory from "./oneCategory";
 import { getUserInfo } from "../store/actions/user/userAction";
 import UserProfile from "./user/userProfile";
+import Cart from "./user/cart";
+import { getAllCartItem } from "../store/actions/user/cartActions";
+import ChooseAddress from "./user/chooseAddress";
 
 function Auth(authProps) {
   return (
@@ -20,6 +23,8 @@ function Auth(authProps) {
       <Route exact path="/product/:id" component={SingleProductDetails} />
       <Route exact path="/:category" component={oneCategory} />
       <Route exact path="/user/profile" component={UserProfile} />
+      <Route exact path="/user/cart" component={Cart} />
+      <Route exact path="/user/order/address" component={ChooseAddress} />
       {authProps.user.isAdmin ? (
         <>
           <Route exact path="/user/admin" component={AdminHome} />
@@ -55,6 +60,7 @@ class App extends React.Component {
     if (localStorage["login-token"]) {
       this.props.dispatch(getUserInfo(this.props));
     }
+    this.props.dispatch(getAllCartItem());
   }
   render() {
     return (

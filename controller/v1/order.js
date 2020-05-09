@@ -6,6 +6,8 @@ var Cart = require("../../models/cart");
 module.exports = {
   placeOrder: async (req, res, next) => {
     try {
+      // console.log()
+
       var orders = req.body.orders;
       var user = await User.findById(req.user.userId);
       for (let order of orders) {
@@ -16,9 +18,15 @@ module.exports = {
           $inc: { quantity: -order.quantity },
         });
       }
-      await Cart.findByIdAndUpdate(user.cart, {
-        $set: { product: [] },
-      });
+      var cartItem = await Cart.findByIdAndUpdate(
+        user.cart,
+        {
+          $set: { product: [] },
+        },
+        { new: true }
+      );
+      // console.log(cartItem, "cart");
+      // console.log(user.cart, "cart id from user");
       var mail = mailController.sendMailOnOrder("name", "mail");
       res.status(200).json({ orders: "placed", mail: "sent" });
     } catch (error) {

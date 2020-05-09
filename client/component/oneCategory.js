@@ -4,12 +4,18 @@ import { Link } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 
 import { getAllProduct } from "../store/actions/allProductAction";
+import { AddItemToCart } from "../store/actions/user/cartActions";
 
 const OneCategory = (props) => {
   if (!props.allProduct) {
     // console.log("inside fetch");
     props.dispatch(getAllProduct());
   }
+
+  const handleAddItem = (id) => {
+    props.dispatch(AddItemToCart(id));
+    alert("Added to cart");
+  };
   let products = findProductByCategory(props.match.params.category, props);
   console.log(products);
   return (
@@ -41,7 +47,10 @@ const OneCategory = (props) => {
                         </small>{" "}
                       </div>
                     </div>
-                    <button className="btn btn-primary font-weight-bold">
+                    <button
+                      onClick={() => handleAddItem(product._id)}
+                      className="btn btn-primary font-weight-bold"
+                    >
                       Add To Cart
                     </button>
                   </div>

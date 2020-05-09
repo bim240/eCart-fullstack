@@ -1,12 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getAllProduct } from "../store/actions/allProductAction";
+import { AddItemToCart } from "../store/actions/user/cartActions";
 
 const SingleProductDetails = (props) => {
   if (!props.allProduct) {
     // console.log("inside fetch");
     props.dispatch(getAllProduct());
   }
+  const handleAddItem = (id) => {
+    props.dispatch(AddItemToCart(id));
+    alert("Added to cart");
+  };
   let product = findProductById(props.match.params.id, props);
   // console.log(product);
   return (
@@ -147,7 +152,7 @@ const SingleProductDetails = (props) => {
                     Buy now{" "}
                   </a>
                   <a
-                    href="#"
+                    onClick={() => handleAddItem(product._id)}
                     className="btn btn-lg btn-outline-primary text-uppercase"
                   >
                     {" "}

@@ -6,6 +6,7 @@ import AdminProductReducer from "./admin/AdminProductReducser";
 import allProductReducer from "./allProductReducer";
 import ErrorReducer from "./errorReducer";
 import AddressReducer from "./user/addressReducers";
+import CartReducer from "./user/cartReducer";
 
 export let rootReducer = combineReducers({
   User: UserReducres,
@@ -14,4 +15,5 @@ export let rootReducer = combineReducers({
   AllProduct: allProductReducer,
   Error: ErrorReducer,
   Addresses: AddressReducer,
+  Cart: CartReducer,
 });

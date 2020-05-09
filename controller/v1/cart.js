@@ -1,6 +1,7 @@
 var Cart = require("../../models/cart");
 
 module.exports = {
+  // get all cart item
   getCart: async (req, res, next) => {
     try {
       let cartInfo = await Cart.findOne({ userId: req.user.userId }).populate(
@@ -11,8 +12,10 @@ module.exports = {
       next(error);
     }
   },
+  // add item to cart
   addToCart: async (req, res, next) => {
     try {
+      // console.log(req.body.product);
       let cart = await Cart.findOne({ userId: req.user.userId });
       let updatedCart = await Cart.findByIdAndUpdate(
         cart.id,
@@ -24,6 +27,7 @@ module.exports = {
       next(error);
     }
   },
+  // remove from cart
   removeFromCart: async (req, res, next) => {
     try {
       let cart = await Cart.findOne({ userId: req.user.userId });
